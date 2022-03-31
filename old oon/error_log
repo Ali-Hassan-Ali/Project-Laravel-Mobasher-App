@@ -1,0 +1,6 @@
+[04-Feb-2022 14:14:43 UTC] PHP Warning:  require(/home/infotouc/public_html/../vendor/autoload.php): failed to open stream: No such file or directory in /home/infotouc/public_html/index.php on line 34
+[04-Feb-2022 14:14:43 UTC] PHP Warning:  require(/home/infotouc/public_html/../vendor/autoload.php): failed to open stream: No such file or directory in /home/infotouc/public_html/index.php on line 34
+[04-Feb-2022 14:14:43 UTC] PHP Fatal error:  require(): Failed opening required '/home/infotouc/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/infotouc/public_html/index.php on line 34
+[04-Feb-2022 14:14:49 UTC] PHP Warning:  require(/home/infotouc/public_html/../vendor/autoload.php): failed to open stream: No such file or directory in /home/infotouc/public_html/index.php on line 34
+[04-Feb-2022 14:14:49 UTC] PHP Warning:  require(/home/infotouc/public_html/../vendor/autoload.php): failed to open stream: No such file or directory in /home/infotouc/public_html/index.php on line 34
+[04-Feb-2022 14:14:49 UTC] PHP Fatal error:  require(): Failed opening required '/home/infotouc/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/infotouc/public_html/index.php on line 34
