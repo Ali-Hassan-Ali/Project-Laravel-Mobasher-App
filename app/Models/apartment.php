@@ -72,7 +72,7 @@ use App\Models\media;
  * @mixin \Eloquent
  */
 
-class apartment extends Model
+class Apartment extends Model
 {
     use HasFactory,SoftDeletes;
 

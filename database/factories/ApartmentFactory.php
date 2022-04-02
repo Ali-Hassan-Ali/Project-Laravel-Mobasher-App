@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ApartmentFactory extends Factory
 {
-    protected $model = apartment::class;
+    protected $model = Apartment::class;
     /**
      * Define the model's default state.
      *
@@ -32,7 +32,6 @@ class ApartmentFactory extends Factory
             'Available_at' =>  $this->faker->date(),
             'class'=> $this->faker->randomElement([1, 2,3]),
             'views' => random_int(0, 30000)
-            //
         ];
     }
 }
