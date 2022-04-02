@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\apartment;
 
-class apartmentSeeder extends Seeder
+class ApartmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
