@@ -14,8 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(AdminsTableSeeder::class);
-        $this->call([ApartmentSeeder::class]);
-        $this->call([RentSeeder::class]);
+        $this->call([
+                    ApartmentSeeder::class,
+                    RentSeeder::class,
+                ]);
         
     }//end of run
 
