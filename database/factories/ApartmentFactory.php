@@ -4,7 +4,7 @@ namespace Database\Factories;
 use App\Models\apartment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ApartmentFactory extends Factory
+class apartmentFactory extends Factory
 {
     protected $model = apartment::class;
     /**
