@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\models\Rent;
+use App\Models\Rent;
+
 class RentSeeder extends Seeder
 {
     /**
@@ -12,6 +13,7 @@ class RentSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   Rent::factory(100)->create();  //
+    { 
+        Rent::factory(100)->create();
     }
 }

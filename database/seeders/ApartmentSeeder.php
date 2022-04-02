@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\models\apartment;
+use App\Models\apartment;
 
 class ApartmentSeeder extends Seeder
 {
