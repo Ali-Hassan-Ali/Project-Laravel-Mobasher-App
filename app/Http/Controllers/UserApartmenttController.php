@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\apartment;
+use App\Models\Apartment;
 
 class UserApartmenttController extends Controller
 {
@@ -12,7 +12,7 @@ class UserApartmenttController extends Controller
     public function fecthApartment(Request $request)
         {
         //composer dump-autoload
-            $apartment =apartment::with('images')->where('avilibalty', 1)->latest()->get();
+            $apartment =Apartment::with('images')->where('avilibalty', 1)->latest()->get();
 
             $total=$apartment->count();
             $page =$request->input('page',1);

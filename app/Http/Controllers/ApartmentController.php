@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\apartment;
+use App\Models\Apartment;
 use App\Models\media;
 use App\Models\User;
 use App\Models\Rent;
@@ -27,7 +27,7 @@ class ApartmentController extends Controller
     public function index()
     {
 
-        $data =apartment::with('images')->get();
+        $data =Apartment::with('images')->get();
         return view ('aparments.view_apartment')->withData ( $data );
     }
 
@@ -62,7 +62,7 @@ class ApartmentController extends Controller
     {
 //    dd($request->imageFile);
 
-      $apartment =  apartment::create($request->only( 'Titel','type','floor','city','state','dimensions','small_room',
+      $apartment =  Apartment::create($request->only( 'Titel','type','floor','city','state','dimensions','small_room',
         'medium_room','large_room','extra_large_room','street',
         'Description','price','lat','lng','class'));
 
@@ -99,7 +99,7 @@ class ApartmentController extends Controller
      */
     public function show(apartment $apartment)
     {
-        return apartment::findOrFail('id', $apartment->id)->first();
+        return Apartment::findOrFail('id', $apartment->id)->first();
     }
 
     /**
@@ -111,14 +111,14 @@ class ApartmentController extends Controller
      */
 
     public function Edit( $id){
-        $apartment = apartment::findOrFail($id);
+        $apartment = Apartment::findOrFail($id);
         return view('aparments.EditApartment')->with('data',$apartment);
     }
     public function update(Request $request)
     {
         $id = $request->id;
         // $apartment = apartment::where('id', $request->id)->update($request->all());
-        $apartment=apartment::find($id)->update($request->all());
+        $apartment=Apartment::find($id)->update($request->all());
 
         return redirect ('apartments')->with('message','بنجاح' .$request->id.'تم تعديل بيانات الشقه' );
     }
@@ -133,7 +133,7 @@ class ApartmentController extends Controller
     {
         //
         // $application->delete();
-        $trash = apartment::find($id)->delete();
+        $trash = Apartment::find($id)->delete();
 
         return redirect()->route('apartments')->with('error','Data Deleted');
         // User::withTrashed()->count();
