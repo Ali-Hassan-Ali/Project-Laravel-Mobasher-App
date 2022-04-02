@@ -17,7 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME  = '/home';
+    
+    public const ADMIN = '/dashboard/admin';
 
     /**
      * The controller namespace for the application.
@@ -35,75 +37,28 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
         $this->configureRateLimiting();
-        Route::pattern('id', '[0-9]+');
 
-        $this->map();
+        $this->routes(function () {
+            
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
 
-        // $this->routes(function () {
-        //     Route::prefix('api')
-        //         ->middleware('api')
-        //         ->namespace($this->namespace)
-        //         ->group(base_path('routes/api.php'));
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/dashboard.php'));
 
-        //     Route::middleware('web')
-        //         ->namespace($this->namespace)
-        //         ->group(base_path('routes/web.php'));
+            Route::prefix('api')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/api.php'));
 
-        //         Route::middleware('mobile')
-        //         ->namespace($this->namespace)
-        //         ->group(base_path('routes/mobile.php'));
-        // });
+            Route::prefix('mobile')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/mobile.php'));
+        });
     }
-
-
-
-    public function map()
-    {
-
-        $this->mapApiRoutes();
-        $this->mapWebRoutes();
-        $this->mapMobileRoutes();
-        $this->mapAdminRoutes();
-
-    }
-
-
-    protected function mapMobileRoutes()
-    {
-        Route::prefix('mobile')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/mobile.php'));
-
-    }
-
-    protected function mapAdminRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/admin.php'));
-    }
-
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-
-             ->group(base_path('routes/web.php'));
-    }
-
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
-
-    }
-
-
-
 
     /**
      * Configure the rate limiters for the application.

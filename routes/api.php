@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApartmentController;
+use App\Http\Controllers\Api\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,9 @@ use App\Http\Controllers\ApartmentController;
 |
 */
 Route::get('Rents',[ApartmentController::class,'getRents']);
+
+Route::get('search/{search}',[SearchController::class,'search']);
+Route::get('advanced_search/{search}',[SearchController::class,'advanced_search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

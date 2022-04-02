@@ -1,9 +1,9 @@
 <?php
- use Illuminate\Http\Request;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\DashboardController;
-
 
 Route::group([ 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
@@ -18,10 +18,6 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.'], function () {
         // Route::get('logout', 'LoginController@logout')->name('logout');
     });
 
-
-
-      
-
-    });
+});
 
 

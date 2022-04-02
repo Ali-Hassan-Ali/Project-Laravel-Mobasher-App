@@ -12,11 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $this->call([
-            // UserSeeder::class,
-            RentSeeder::class,
-             ApartmentSeeder::class,
-        ]);
-    }
-}
+        $this->call(AdminsTableSeeder::class);
+        $this->call(RentSeeder::class);
+        $this->call(ApartmentSeeder::class);
+        
+    }//end of run
+
+}//en dof run

@@ -1,35 +1,44 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-// https://medium.com/@boolfalse/laravel-multi-auth-using-different-tables-part-2-admin-authentication-37d33420ab3b
-class admin extends Authenticatable
+use Illuminate\Database\Eloquent\Model;
+
+class Admin extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory;
 
-    protected $table = 'admins';
-    protected $guard = 'admin';
-    public function role(){
-        // return $this->belongsTo(AdminRole::class,'admin_role_id');
-    }
+    protected $guard    = 'admin';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'job_title',
-    ];
+    protected $fillable = ['name','email','password','phone'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-}
+    protected $hidden   = ['password','remember_token'];
+    
+    protected $casts    = ['email_verified_at' => 'datetime'];
+
+    protected $appends  = ['image_path'];
+
+     //attributes----------------------------------
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path
+
+    //scopes -------------------------------------
+    public function scopeWhenSearch($query , $search) 
+    {
+        return $query->when($search, function ($q) use ($search) {
+
+            return $q->where('name' , 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%")
+            ->orWhere('phone', 'like', "%$search%");
+        });
+        
+    }//end o fscopeWhenSearch`
+
+    //relations ----------------------------------
+
+}//end of model
