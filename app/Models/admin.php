@@ -39,7 +39,7 @@ class Admin extends Authenticatable
             ->orWhere('phone', 'like', "%$search%");
         });
         
-    }//end o fscopeWhenSearch`
+    }//end of scopeWhenSearch`
 
     //relations ----------------------------------
 

@@ -36,6 +36,10 @@
 
 
     <style>
+        .is-invalid {
+            color: red !important;
+            border: red solid 1px;
+        }
         .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a, .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a, .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a
         {
             color: red !important

@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
+use App\Http\Controllers\Dashboard\Admin\Auth\ProfileController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
+use App\Http\Controllers\Dashboard\Admin\ApartmentController;
+use App\Http\Controllers\Dashboard\Admin\OrderController;
+use App\Http\Controllers\Dashboard\Admin\CityController;
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 
 
@@ -16,14 +20,20 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::get('/', [WelcomController::class,'index'])->name('welcome');
 
     // profile route
-    Route::get('profile/edit', [LoginController::class,'edit'])->name('profile.edit');
-    Route::put('profile/update/{user}', [LoginController::class,'update'])->name('profile.update');
+    Route::get('profile/edit', [ProfileController::class,'edit'])->name('profile.edit');
+    Route::put('profile/update/{user}', [ProfileController::class,'update'])->name('profile.update');
 
-    //user routes
+    //admins routes
     Route::resource('admins', AdminController::class)->except(['show']);
 
-    //user routes
-    Route::resource('orders', AdminController::class)->except(['show']);
+    //apartments routes
+    Route::resource('apartments', ApartmentController::class)->except(['show']);
+
+    //orders routes
+    Route::resource('orders', OrderController::class)->except(['show']);
+
+    //citys routes
+    Route::resource('citys', CityController::class)->except(['show']);
 
 
 }); //end of dashboard routes

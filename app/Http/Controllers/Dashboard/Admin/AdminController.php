@@ -33,11 +33,12 @@ class AdminController extends Controller
             'name'        => ['required','max:255'],
             'email'       => ['required','unique:admins'],
             'image'       => ['required','image'],
-            'phone'       => ['required','max:11','min:8'],
+            'phone'       => ['required','unique:admins','max:11','min:8'],
             'password'    => ['required','confirmed'],
+            'permissions' => ['required','min:1'],
         ]);
 
-        // try {
+        try {
 
             $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
             $request_data['password'] = bcrypt($request->password);
@@ -56,11 +57,11 @@ class AdminController extends Controller
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.admins.index');
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // }//end try
+        }//end try
 
     }//end of store
 
@@ -77,7 +78,8 @@ class AdminController extends Controller
          $request->validate([
             'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('admins')->ignore($admin->id)],
-            'phone'       => ['required','max:11','min:8'],
+            'phone'       => ['required', Rule::unique('admins')->ignore($admin->id)],
+            'permissions' => ['required','min:1'],
         ]);
 
         try {
@@ -110,12 +112,7 @@ class AdminController extends Controller
 
     }//end of update
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Admin $admin)
     {
         try {
@@ -138,5 +135,6 @@ class AdminController extends Controller
         }//end try
 
     }//end of destroy
+    
 
 }//end of controller

@@ -36,23 +36,42 @@
 
                     <div class="form-group">
                         <label>@lang('dashboard.name')</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name') }}">
-                        
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                        @error('name')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>@lang('dashboard.phone')</label>
-                        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
+                        <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
+                        @error('phone')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>@lang('dashboard.email')</label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                        @error('email')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>@lang('dashboard.image')</label>
-                        <input type="file" name="image" class="form-control image">
+                        <input type="file" name="image" class="form-control @error('image') is-invalid @enderror image">
+                        @error('image')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -61,7 +80,12 @@
 
                     <div class="form-group">
                         <label>@lang('dashboard.password')</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                        @error('password')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -71,6 +95,11 @@
 
                     <div class="form-group">
                         <label>@lang('admin.permissions')</label>
+                        @error('permissions')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         <div class="nav-tabs-custom">
 
                             @php

@@ -17,8 +17,10 @@ return [
             
             'dashboard_admin' => 'r',
 
-            'admins' => 'c,r,u,d',
-            'orders' => 'c,r,u,d',
+            'admins'     => 'c,r,u,d',
+            'orders'     => 'c,r,u,d',
+            'citys'      => 'c,r,u,d',
+            'apartments' => 'c,r,u,d',
         ],
 
         'admin' => [],
