@@ -8,7 +8,7 @@ use App\Http\Controllers\ApartmentController;
 
 Route::get('/', function (){
     
-    return view('welcome');
+    return view('dashboard.login');
 
 });
 

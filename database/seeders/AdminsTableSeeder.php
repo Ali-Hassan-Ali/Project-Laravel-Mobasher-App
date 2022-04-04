@@ -20,7 +20,7 @@ class AdminsTableSeeder extends Seeder
             'password' => bcrypt('123123123'),
         ]);
 
-        // $admin->attachRole('super_admin');
+        $admin->attachRole('super_admin');
 
     }//end of run
     
