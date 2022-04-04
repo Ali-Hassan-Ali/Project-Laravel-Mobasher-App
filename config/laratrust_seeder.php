@@ -23,7 +23,9 @@ return [
             'apartments' => 'c,r,u,d',
         ],
 
-        'admin' => [],
+        'admin' => [
+            'dashboard'  => 'r',
+        ],
     ],
 
     'permissions_map' => [
