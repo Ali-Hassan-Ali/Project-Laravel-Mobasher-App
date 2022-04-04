@@ -19,7 +19,7 @@ class Authenticate extends Middleware
 
             if (in_array('auth:admin', $request->route()->middleware())) {
 
-                return route('dashboard.admin.login');
+                return route('dashboard.login.index');
             }
 
               return route('login');

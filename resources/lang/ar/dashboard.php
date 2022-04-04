@@ -42,6 +42,8 @@ return [
     'title'   => 'العنوان',
     'message' => 'الرسائل',
 
+    'orders'      => 'الطلبات',
+    'apartments'  => 'شقق سكنية',
     'citys'       => 'المدن',
 
 ];

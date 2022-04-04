@@ -13,7 +13,7 @@ use App\Http\Controllers\Dashboard\Admin\WelcomController;
 
 Route::get('/dashboard/login', [AuthController::class,'index'])->name('dashboard.login.index');
 Route::post('/dashboard/login', [AuthController::class,'store'])->name('dashboard.login.store');
-Route::post('/dashboard/logout', [AuthController::class,'seller_logout'])->name('dashboard.logout');
+Route::post('/dashboard/logout', [AuthController::class,'logout'])->name('dashboard.logout');
 
 Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:admin'])->group(function () {
 

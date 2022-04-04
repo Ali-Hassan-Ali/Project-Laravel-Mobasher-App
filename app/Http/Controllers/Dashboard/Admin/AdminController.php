@@ -10,10 +10,20 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:admins_read'])->only('index');
+        $this->middleware(['permission:admins_create'])->only('create','store');
+        $this->middleware(['permission:admins_update'])->only('edit','update');
+        $this->middleware(['permission:admins_delete'])->only('destroy');
+
+    } //end of constructor
     
     public function index()
     {
-        $admins = Admin::WhenSearch(request()->search)->latest()->paginate(10);
+        $admins = Admin::whereRoleIs('admin')->WhenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard_admin.admins.index', compact('admins'));
 
@@ -38,7 +48,7 @@ class AdminController extends Controller
             'permissions' => ['required','min:1'],
         ]);
 
-        try {
+        // try {
 
             $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
             $request_data['password'] = bcrypt($request->password);
@@ -57,18 +67,18 @@ class AdminController extends Controller
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.admins.index');
 
-        } catch (\Exception $e) {
+        // } catch (\Exception $e) {
 
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        // }//end try
 
     }//end of store
 
 
     public function edit(Admin $admin)
     {
-        return view('dashboard_admin.admins.index', compact('admin'));
+        return view('dashboard_admin.admins.edit', compact('admin'));
 
     }//end of edit
 

@@ -3,8 +3,8 @@
     {{--<!-- Logo -->--}}
     <a href="{{ asset('dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>S</b>FC</span>
-        <span class="logo-lg"><b>Sudanfarms</b></span>
+        <span class="logo-mini"><b>M</b>-A</span>
+        <span class="logo-lg"><b>mobasher-app</b></span>
     </a>
 
     <nav class="navbar navbar-static-top">

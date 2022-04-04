@@ -103,13 +103,13 @@
                         <div class="nav-tabs-custom">
 
                             @php
-                                $models = ['admins','orders'];
+                                $models = ['admins','orders','apartments','citys'];
                                 $maps = ['create', 'read', 'update', 'delete'];
                             @endphp
 
                             <ul class="nav nav-tabs">
                                 @foreach ($models as $index=>$model)
-                                    <li class="{{ $index == 0 ? 'active' : '' }}"><a href="#{{ $model }}" data-toggle="tab">@lang('admin.' . $model)</a></li>
+                                    <li class="{{ $index == 0 ? 'active' : '' }}"><a href="#{{ $model }}" data-toggle="tab">@lang('dashboard.' . $model)</a></li>
                                 @endforeach
                             </ul>
 

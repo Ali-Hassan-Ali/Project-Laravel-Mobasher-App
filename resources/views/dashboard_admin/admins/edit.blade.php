@@ -1,4 +1,4 @@
-@extends('dashboard.layout.app')
+@extends('dashboard_admin.layout.app')
 
 @section('content')
 
@@ -6,11 +6,11 @@
     
     <section class="content-header">
 
-        <h1>@lang('dashboard.users')</h1>
+        <h1>@lang('dashboard.admins')</h1>
 
         <ol class="breadcrumb">
-            <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-            <li><a href="{{ route('dashboard.users.index') }}"> @lang('dashboard.users')</a></li>
+            <li><a href="{{ route('dashboard.admin.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
+            <li><a href="{{ route('dashboard.admin.admins.index') }}"> @lang('dashboard.admins')</a></li>
             <li class="active">@lang('dashboard.edit')</li>
         </ol>
     </section>
@@ -25,18 +25,8 @@
 
             <div class="box-body">
 
-                {{-- @include('partials._errors') --}}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
-                <form action="{{ route('dashboard.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.admin.admins.update', $admin->id) }}" method="post" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
                     {{ method_field('put') }}
@@ -44,7 +34,7 @@
 
                     <div class="form-group">
                         <label>@lang('dashboard.name')</label>
-                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $user->name }}">
+                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $admin->name }}">
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -53,8 +43,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label>@lang('dashboard.phone')</label>
+                        <input type="text" name="phone" class="form-control{{ $errors->has('phone') ? 'is-invalid' : '' }}" value="{{ $admin->phone }}">
+                        @if ($errors->has('phone'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
                         <label>@lang('dashboard.email')</label>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ $user->email }}">
+                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ $admin->email }}">
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -73,15 +73,15 @@
                     </div>
 
                     <div class="form-group">
-                        <img src="{{ $user->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
+                        <img src="{{ $admin->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
                     </div>
 
                     <div class="form-group">
-                        <label>@lang('dashboard.permissions')</label>
+                        <label>@lang('admin.permissions')</label>
                         <div class="nav-tabs-custom">
 
                             @php
-                                $models = ['users', 'cupons','parent_categorys','sub_categories','markets','carts','carts_store','how_to_use','generate_carts','settings'];
+                                $models = ['admins','orders','apartments','citys'];
                                 $maps = ['create', 'read', 'update', 'delete'];
                             @endphp
 
@@ -98,8 +98,8 @@
                                     <div class="tab-pane {{ $index == 0 ? 'active' : '' }} my-3 mb-5" id="{{ $model }}">
 
                                         @foreach ($maps as $map)
-                                            {{--create_users--}}
-                                            <label class="mx-2"><input type="checkbox" name="permissions[]" {{ $user->hasPermission($model . '_' . $map) ? 'checked' : '' }} value="{{ $model . '_' . $map }}"> @lang('dashboard.' . $map)</label>
+                                            {{--create_admins--}}
+                                            <label class="mx-2"><input type="checkbox" name="permissions[]" {{ $admin->hasPermission($model . '_' . $map) ? 'checked' : '' }} value="{{ $model . '_' . $map }}"> @lang('dashboard.' . $map)</label>
                                         @endforeach
 
                                     </div>

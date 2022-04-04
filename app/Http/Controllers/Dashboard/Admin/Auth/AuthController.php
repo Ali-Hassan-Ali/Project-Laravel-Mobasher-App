@@ -86,12 +86,11 @@ class AuthController extends Controller
 
     }//end of login store function
 
-    public function admin_logout()
+    public function logout()
     {
         auth()->guard('admin')->logout();
 
-        // notify()->success( __('dashboard.login_successfully'));
-        session()->flash('success', __('dashboard.login_successfully'));
+        session()->flash('success', __('dashboard.logoute_successfully'));
         return view('dashboard_admin.auth.login');
 
     }//end of logout admin

@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class CityController extends Controller
 {
 
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:citys_read'])->only('index');
+        $this->middleware(['permission:citys_create'])->only('create','store');
+        $this->middleware(['permission:citys_update'])->only('edit','update');
+        $this->middleware(['permission:citys_delete'])->only('destroy');
+
+    } //end of constructor
+
     public function index()
     {
         $citys = City::WhenSearch(request()->search)->latest()->paginate(10);

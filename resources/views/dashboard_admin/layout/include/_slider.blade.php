@@ -26,19 +26,19 @@
             @endif
 
             @if (auth()->guard('admin')->user()->hasPermission('apartments_read'))
-                <li class="{{ request()->segment(3) == '' ? 'active' : '' }}">
+                <li class="{{ request()->segment(3) == 'apartments' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.admin.apartments.index') }}"><i class="fa fa-dashboard"></i><span>@lang('dashboard.apartments')</span></a>
                 </li>
             @endif
 
             @if (auth()->guard('admin')->user()->hasPermission('orders_read'))
                 <li class="{{ request()->segment(3) == 'orders' ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.admin.orders.index') }}"><i class="fa fa-dashboard"></i><span>@lang('admin.orders')</span></a>
+                    <a href="{{ route('dashboard.admin.orders.index') }}"><i class="fa fa-dashboard"></i><span>@lang('dashboard.orders')</span></a>
                 </li>
             @endif
 
             @if (auth()->guard('admin')->user()->hasPermission('citys_read'))
-                <li class="{{ request()->segment(3) == '' ? 'active' : '' }}">
+                <li class="{{ request()->segment(3) == 'citys' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.admin.citys.index') }}"><i class="fa fa-dashboard"></i><span>@lang('dashboard.citys')</span></a>
                 </li>
             @endif

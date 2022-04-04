@@ -8,7 +8,13 @@ use App\Http\Controllers\ApartmentController;
 
 Route::get('/', function (){
     
-    return view('dashboard.login');
+    if (!auth()->guard('admin')->check()) {
+            
+        return view('dashboard_admin.auth.login');
+
+    }//end of if
+
+    return redirect()->route('dashboard.admin.welcome');
 
 });
 
