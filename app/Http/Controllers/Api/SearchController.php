@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\apartment;
+use App\Models\Apartment;
 
 class SearchController extends Controller
 {
     public function search($search)
     {   
-        $apartments = apartment::where('city' , 'like', "%$search%")->get();
+        $apartments = Apartment::where('city' , 'like', "%$search%")->get();
 
         return response()->api($apartments);
 
@@ -18,7 +18,7 @@ class SearchController extends Controller
 
     public function advanced_search($search)
     {
-        $apartments = apartment::WhenSearch($search)->get();
+        $apartments = Apartment::WhenSearch($search)->get();
 
         return response()->api($apartments);
 
