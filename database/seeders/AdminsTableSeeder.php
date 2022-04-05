@@ -13,8 +13,7 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-
-        $admin = \DB::table('admins')->insert([
+        $admin = \App\Models\Admin::create([
             'name'     => 'admin',
             'phone'    => '123123123',
             'email'    => 'super_admin@app.com',
