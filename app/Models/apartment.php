@@ -104,7 +104,7 @@ class Apartment extends Model
     {
         return $query->when($search, function ($q) use ($search) {
 
-            return $q->where('Titel' , 'like', "%$search%")
+            return $q->where('title' , 'like', "%$search%")
             ->orWhere('type', 'like', "%$search%")
             ->orWhere('floor', 'like', "%$search%")
             ->orWhere('city', 'like', "%$search%")

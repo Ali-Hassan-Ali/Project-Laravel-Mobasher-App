@@ -17,8 +17,8 @@ use App\Http\Controllers\Api\SearchController;
 */
 Route::get('Rents',[ApartmentController::class,'getRents']);
 
-Route::get('search/{search}',[SearchController::class,'search']);
-Route::get('advanced_search/{search}',[SearchController::class,'advanced_search']);
+Route::post('search',[SearchController::class,'search']);
+Route::post('advanced_search',[SearchController::class,'advanced_search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -8,17 +8,17 @@ use App\Models\Apartment;
 
 class SearchController extends Controller
 {
-    public function search($search)
+    public function search(Request $request)
     {   
-        $apartments = Apartment::where('city' , 'like', "%$search%")->get();
+        $apartments = Apartment::where('city' , 'like', "%$request->search%")->get();
 
         return response()->api($apartments);
 
     }//end of search
 
-    public function advanced_search($search)
+    public function advanced_search(Request $request)
     {
-        $apartments = Apartment::WhenSearch($search)->get();
+        $apartments = Apartment::WhenSearch($request->search)->get();
 
         return response()->api($apartments);
 
