@@ -19,7 +19,7 @@ class CreateRentTable extends Migration
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(apartment::class);
+            $table->foreignIdFor(Apartment::class);
             $table->integer('status')->default('0');
             $table->boolean('Rented')->default(false);
             $table->softDeletes();

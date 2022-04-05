@@ -18,7 +18,7 @@ class CreateProvidersTable extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->default(1);
-            $table->foreignIdFor(apartment::class);
+            $table->foreignIdFor(Apartment::class);
             $table->timestamps();
         });
     }

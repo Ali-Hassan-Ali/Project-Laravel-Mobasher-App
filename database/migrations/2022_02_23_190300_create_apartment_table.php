@@ -15,7 +15,7 @@ class CreateApartmentTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
-            $table->string('Titel');
+            $table->string('title');
             $table->string('type');
             $table->string('floor');
             $table->string('city');
