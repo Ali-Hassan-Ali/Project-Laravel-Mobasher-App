@@ -23,8 +23,6 @@ class OrderController extends Controller
 
     public function index()
     {
-        return 'fdf';
-        
         $orders = Order::WhenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard_admin.orders.index', compact('orders'));
