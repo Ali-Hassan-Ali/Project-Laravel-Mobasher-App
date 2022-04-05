@@ -8,6 +8,7 @@ return [
     'sales_graph'  => 'الاحصائيات',
     'setting'      => 'الاعدادات',
     'admins'       => 'المشرفين',
+    'users'        => 'العملاء',
     'logout'       => 'تسجيل الخروج',
 
     'confirm_delete'       => '!تأكيد الحذف',
@@ -29,6 +30,7 @@ return [
     'list'    => 'قائمة',
     'action'  => 'الاحداث',
     'search'  => 'بحث',
+    'select'  => 'اختر',
     
     'name'    => 'الاسم',
     'email'   => 'الاميل',
@@ -41,9 +43,11 @@ return [
     'quantity'=> 'كمية',
     'title'   => 'العنوان',
     'message' => 'الرسائل',
+    'status'  => 'الحالة',
 
     'orders'      => 'الطلبات',
     'apartments'  => 'شقق سكنية',
     'citys'       => 'المدن',
+    'user_name'   => 'اسم المستخدم',
 
 ];

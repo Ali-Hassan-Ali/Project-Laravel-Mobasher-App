@@ -55,24 +55,21 @@ class User extends Authenticatable
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     *  use HasApiTokens, HasFactory, Notifiable;
-*/
-    protected $guarded= [];
-    protected $hidden = [
-        'password',
+    protected $guarded = [];
+    protected $appends = ['name'];
+    protected $hidden  = ['password'];
+    protected $casts   = ['Email_verified_at' => 'datetime'];
 
-    ];
-    protected $casts = [
-        'Email_verified_at' => 'datetime',
-    ];
-
-    public function Rents(){
+    public function Rents()
+    {
         return $this->hasMany(Rent::class);
-    }
 
-    
-}
+    }//endo frents
+
+    public function getNameAttribute()
+    {
+        return $this->f_name . $this->l_name;
+
+    }//end of name
+
+}//end of model

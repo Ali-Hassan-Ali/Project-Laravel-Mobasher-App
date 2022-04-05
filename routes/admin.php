@@ -30,7 +30,7 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::resource('apartments', ApartmentController::class)->except(['show']);
 
     //orders routes
-    Route::resource('orders', OrderController::class)->except(['show']);
+    Route::resource('orders', OrderController::class);
 
     //citys routes
     Route::resource('citys', CityController::class)->except(['show']);

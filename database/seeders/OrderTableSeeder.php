@@ -13,7 +13,7 @@ class OrderTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = ['order 1','order 2','order 3','order 4','order 5','order 6','order 7','order 8'];
+        $users = ['1','2','3','4','5','6','7','8','9'];
 
         foreach ($users as $user) {
 
