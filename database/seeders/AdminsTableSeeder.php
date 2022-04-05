@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Admin;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = \App\Models\Admin::create([
+        $admin = Admin::create([
             'name'     => 'admin',
             'phone'    => '123123123',
             'email'    => 'super_admin@app.com',

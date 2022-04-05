@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $order->user->name }}</td>
-                                        {{-- <td>{{ $order->apartment->title }}</td> --}}
+                                        <td>{{ $order->apartment->title }}</td>
                                         <td>{{ $order->status }}</td>
                                         <td>{{ $order->created_at->toFormattedDateString() }}</td>
                                         <td>
