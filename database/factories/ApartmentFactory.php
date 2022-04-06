@@ -26,7 +26,7 @@ class ApartmentFactory extends Factory
             'large_room'       => random_int(0, 2),
             'extra_large_room' => random_int(0, 1),
             'street'       =>  random_int(1, 220),
-            'Description'  => $this->faker->sentence,
+            'description'  => $this->faker->sentence,
             'price'        => random_int(20, 2000),
             'avilibalty'   => random_int(0,1),
             'available_at' => $this->faker->date(),

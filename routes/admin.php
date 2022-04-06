@@ -27,7 +27,7 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::resource('admins', AdminController::class)->except(['show']);
 
     //apartments routes
-    Route::resource('apartments', ApartmentController::class)->except(['show']);
+    Route::resource('apartments', ApartmentController::class);
 
     //orders routes
     Route::resource('orders', OrderController::class);

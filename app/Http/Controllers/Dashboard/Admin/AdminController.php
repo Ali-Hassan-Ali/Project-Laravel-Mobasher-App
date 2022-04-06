@@ -48,7 +48,7 @@ class AdminController extends Controller
             'permissions' => ['required','min:1'],
         ]);
 
-        // try {
+        try {
 
             $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
             $request_data['password'] = bcrypt($request->password);
@@ -67,11 +67,11 @@ class AdminController extends Controller
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.admins.index');
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // }//end try
+        }//end try
 
     }//end of store
 

@@ -9,6 +9,13 @@ use App\Models\Owner;
 
 class WelcomController extends Controller
 {
+
+    public function __construct()
+    {
+        //read 
+        $this->middleware(['permission:dashboard_read'])->only('index');
+
+    }//end of constructor
     
     public function index()
     {

@@ -13,7 +13,7 @@
 
         <ul class="sidebar-menu" data-widget="tree">
 
-            @if (auth()->guard('admin')->user()->hasPermission('dashboard_admin_read'))
+            @if (auth()->guard('admin')->user()->hasPermission('dashboard_read'))
                 <li class="{{ request()->segment(3) == '' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.admin.welcome') }}"><i class="fa fa-dashboard"></i><span>@lang('dashboard.dashboard')</span></a>
                 </li>

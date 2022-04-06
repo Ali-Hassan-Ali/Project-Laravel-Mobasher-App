@@ -2,17 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.orders') .' - '. __('dashboard.show'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.apartments') .' - '. __('dashboard.show'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.orders')</h1>
+            <h1>@lang('dashboard.apartments')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.admin.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li class="active">@lang('dashboard.orders')</li>
+                <li class="active">@lang('dashboard.apartments')</li>
             </ol>
         </section>
 
@@ -22,9 +22,9 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.orders') <small>{{ $orders->total() }}</small></h3>
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.apartments') <small>{{ $apartments->total() }}</small></h3>
 
-                    <form action="{{ route('dashboard.admin.orders.index') }}" method="get">
+                    <form action="{{ route('dashboard.admin.apartments.index') }}" method="get">
 
                         <div class="row">
 
@@ -34,8 +34,8 @@
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('dashboard.search')</button>
-                                @if (auth()->user()->hasPermission('orders_create'))
-                                    <a href="{{ route('dashboard.admin.orders.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
+                                @if (auth()->user()->hasPermission('apartments_create'))
+                                    <a href="{{ route('dashboard.admin.apartments.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @endif
@@ -48,7 +48,7 @@
 
                 <div class="box-body">
 
-                    @if ($orders->count() > 0)
+                    @if ($apartments->count() > 0)
                     
                         <div class="table-responsive">
                             
@@ -57,8 +57,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('dashboard.apartments')</th>
-                                    <th>@lang('dashboard.user_name')</th>
+                                    <th>@lang('dashboard.title')</th>
+                                    <th>@lang('dashboard.type')</th>
+                                    <th>@lang('dashboard.city')</th>
                                     <th>@lang('dashboard.status')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
@@ -66,21 +67,22 @@
                                 </thead>
                                 
                                 <tbody>
-                                @foreach ($orders as $index=>$order)
+                                @foreach ($apartments as $index=>$apartment)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $order->user->name }}</td>
-                                        <td>{{ $order->apartment->title }}</td>
-                                        <td>{{ $order->status }}</td>
-                                        <td>{{ $order->created_at->toFormattedDateString() }}</td>
+                                        <td>{{ $apartment->title }}</td>
+                                        <td>{{ $apartment->type }}</td>
+                                        <td>{{ $apartment->city }}</td>
+                                        <td>{{ $apartment->status }}</td>
+                                        <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
                                         <td>
-                                            @if (auth()->user()->hasPermission('orders_update'))
-                                                <a href="{{ route('dashboard.admin.orders.edit', $order->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @if (auth()->user()->hasPermission('apartments_update'))
+                                                <a href="{{ route('dashboard.admin.apartments.edit', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                             @else
                                                 <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                             @endif
-                                            @if (auth()->user()->hasPermission('orders_delete'))
-                                                <form action="{{ route('dashboard.admin.orders.destroy', $order->id) }}" method="post" style="display: inline-block">
+                                            @if (auth()->user()->hasPermission('apartments_delete'))
+                                                <form action="{{ route('dashboard.admin.apartments.destroy', $apartment->id) }}" method="post" style="display: inline-block">
                                                     {{ csrf_field() }}
                                                     {{ method_field('delete') }}
                                                     <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
@@ -88,9 +90,7 @@
                                             @else
                                                 <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
                                             @endif
-
-                                            <a href="{{ route('dashboard.admin.orders.show', $order->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> @lang('dashboard.status')</a>
-
+                                            <a href="{{ route('dashboard.admin.apartments.show', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> @lang('dashboard.status')</a>
                                         </td>
                                     </tr>
                                 
@@ -99,7 +99,7 @@
 
                             </table><!-- end of table -->
                             
-                            @include('pagination.default', ['pagination' => $orders])
+                            {{ $apartments->appends(request()->query())->links() }}
 
                         </div><!-- end of table  responsive-->
                         

@@ -78,13 +78,17 @@ class Apartment extends Model
 
     protected $table = 'apartments';
 
-    protected $fillable = [
-        'Titel','type','floor','city','state','dimensions','small_room',
-        'medium_room','large_room','extra_large_room','street',
-        'Description','price','lat','lng','avilibalty',
-        'Available_at','photos','class','views'
-    ];
+    protected $guarded = [];
+    protected $appends = ['image_path'];
 
+    //attributes----------------------------------
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path
+
+    //relations ----------------------------------
     public function Rents()
     {
         return $this->hasMany(Rent::class);
@@ -100,6 +104,7 @@ class Apartment extends Model
         return $this->hasMany(media::class);
     }
 
+    //scopes -------------------------------------
     public function scopeWhenSearch($query , $search) 
     {
         return $query->when($search, function ($q) use ($search) {

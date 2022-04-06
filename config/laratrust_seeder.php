@@ -14,9 +14,7 @@ return [
     'roles_structure' => [
 
         'super_admin' => [
-            
-            'dashboard_admin' => 'r',
-
+            'dashboard'  => 'r',
             'admins'     => 'c,r,u,d',
             'orders'     => 'c,r,u,d',
             'citys'      => 'c,r,u,d',
