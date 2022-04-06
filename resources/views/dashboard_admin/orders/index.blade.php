@@ -99,7 +99,7 @@
 
                             </table><!-- end of table -->
                             
-                            @include('pagination.default', ['pagination' => $orders])
+                            {{ $orders->appends(request()->query())->links() }}
 
                         </div><!-- end of table  responsive-->
                         
