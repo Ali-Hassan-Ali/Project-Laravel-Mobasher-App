@@ -12,6 +12,17 @@ class SearchController extends Controller
     {   
         $apartments = Apartment::where('city' , 'like', "%$request->search%")->get();
 
+        return response([
+                'message' => "ok",
+                'error'   => false,
+                'data'    => $apartments,
+                'meta' => [
+                    'total'     => $apartments->count(),
+                    'page'      => $apartments->count(),
+                    'last_page' => ceil($apartments->count()/20)
+                ]
+            ],200);
+
         return response()->api($apartments);
 
     }//end of search
@@ -19,6 +30,17 @@ class SearchController extends Controller
     public function advanced_search(Request $request)
     {
         $apartments = Apartment::WhenSearch($request->search)->get();
+
+        return response([
+                'message' => "ok",
+                'error'   => false,
+                'data'    => $apartments,
+                'meta' => [
+                    'total'     => $apartments->count(),
+                    'page'      => $apartments->count(),
+                    'last_page' => ceil($apartments->count()/20)
+                ]
+            ],200);
 
         return response()->api($apartments);
 
