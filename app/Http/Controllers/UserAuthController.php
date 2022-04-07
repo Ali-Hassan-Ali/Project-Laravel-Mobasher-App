@@ -55,14 +55,14 @@ class UserAuthController extends Controller
  //  \Mail::to($request->email)->send(new sendEmail($mail_details));
  //  SendSMS($otp);
 
-  return response(
-   [
-   'message' => 'ok',
-   'error' =>false ,
-    'user'=>$user,
-    'subject' => 'OTP sent  successfully tp youer phone number',
-    'body' => ' OTP  '. $otp
-   ],201);  }
+  return response([
+       'message' => 'ok',
+       'error' =>false ,
+        'user'=>$user,
+        'subject' => 'OTP sent  successfully tp youer phone number',
+        'body' => ' OTP  '. $otp
+       ],201);
+    }
 
 
 
@@ -178,7 +178,7 @@ class UserAuthController extends Controller
         }
 
         public function SendSMS(int $Otp){
-            $basic  = new \Nexmo\Client\Credentials\Basic('key', 'secret');
+        $basic  = new \Nexmo\Client\Credentials\Basic('key', 'secret');
         $client = new \Nexmo\Client($basic);
 
         $message = $client->message()->send([
