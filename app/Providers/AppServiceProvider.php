@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         ResponseFactory::macro('api', function ($data = null, $error = false, $message = 'ok', $status = 200) {
             return response()->json([
-                $status   => $status,
+                'status'  => $status,
                 'data'    => $data,
                 'error'   => $error, //1 or 0
                 'message' => $message,
