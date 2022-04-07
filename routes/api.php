@@ -17,12 +17,12 @@ use App\Http\Controllers\Api\ApartmentController;
 |
 */
 
-Route::post('search',[SearchController::class,'search']);
-Route::post('advanced_search',[SearchController::class,'advanced_search']);
+Route::post('/search',[SearchController::class,'search']);
+Route::post('/advanced_search',[SearchController::class,'advanced_search']);
 
-Route::post('order/store',[OrderController::class,'store']);
+Route::post('/order/store',[OrderController::class,'store']);
 
-Route::post('apartments/store',[ApartmentController::class,'store']);
+Route::post('/apartments/store',[ApartmentController::class,'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
