@@ -16,7 +16,7 @@ Route::prefix('/user')->group(function () {
     });
     
 
-    Route::post('/',[SearchController::class,'search']);
+    Route::post('/search',[SearchController::class,'search']);
     Route::post('/advanced_search',[SearchController::class,'advanced_search']);
 
 
