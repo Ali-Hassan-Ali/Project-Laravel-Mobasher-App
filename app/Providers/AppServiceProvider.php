@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         
         Schema::defaultStringLength(191);
 
-        ResponseFactory::macro('api', function ($data = null, $error = 0, $message = 'error', $status = 200) {
+        ResponseFactory::macro('api', function ($data = null, $error = false, $message = 'ok', $status = 200) {
             return response()->json([
                 $status   => $status,
                 'data'    => $data,
