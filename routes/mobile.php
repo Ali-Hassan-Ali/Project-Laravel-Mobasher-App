@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserApartmenttController;
 use App\Http\Controllers\RentController;
+use App\Http\Controllers\Api\SearchController;
 use App\Http\Models\User;
 
 Route::prefix('/user')->group(function () {
@@ -13,6 +14,9 @@ Route::prefix('/user')->group(function () {
         return "server is up to work 🤡"; 
     });
     
+    Route::post('search',[SearchController::class,'search']);
+    Route::post('advanced_search',[SearchController::class,'advanced_search']);
+
     Route::post('/New_Acount',[UserAuthController::class,'NewAcount']);
     Route::post('/login',[UserAuthController::class,'login'])->name('MoblieLogin');
     Route::post('/verify_otp', [UserAuthController::class,'verifyOtp']);
