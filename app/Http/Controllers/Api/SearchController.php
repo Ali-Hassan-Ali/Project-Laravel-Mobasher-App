@@ -11,6 +11,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {   
         $apartments = Apartment::where('city' , 'like', "%$request->search%")->get();
+        \Cache::set('Apartment',$apartments ,30*60);//30min
         $page       = $request->input('page',1);
 
         return response([
@@ -31,6 +32,7 @@ class SearchController extends Controller
     public function advanced_search(Request $request)
     {
         $apartments = Apartment::WhenSearch($request->search)->get();
+        \Cache::set('Apartment',$apartments ,30*60);//30min
         $page       = $request->input('page',1);
 
         return response([
