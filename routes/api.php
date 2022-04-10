@@ -18,11 +18,11 @@ use App\Http\Controllers\Api\ApartmentController;
 */
 
 Route::get('ping', function() {
-    return "server is up to work 🤡"; 
+    return "server is up to work 🤡";
 });
 
 Route::post('ping/post', function(Request $request) {
-    return "work post 🤡"; 
+    return "work post 🤡";
 });
 
 Route::post('/search',[SearchController::class,'search']);
