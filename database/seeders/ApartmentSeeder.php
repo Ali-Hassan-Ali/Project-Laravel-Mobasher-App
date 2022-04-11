@@ -14,7 +14,7 @@ class ApartmentSeeder extends Seeder
      */
     public function run()
     {
-        $citys = ['الخرطوم','بحري','امدرمان'];
+        $citys = ['الخرطوم','بحري','امد رمان'];
 
         foreach ($citys as $city) {
 
