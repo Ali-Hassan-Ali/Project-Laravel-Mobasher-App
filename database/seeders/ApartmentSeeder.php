@@ -14,6 +14,32 @@ class ApartmentSeeder extends Seeder
      */
     public function run()
     {
-        Apartment::factory(400)->create();
-    }
-}
+        $citys = ['الخرطوم','بحري','امدرمان'];
+
+        foreach ($citys as $city) {
+
+            $apartments = ['apartment one','apartment tow','apartment three','apartment for'];
+
+            foreach ($apartments as $key => $data) {
+
+                Apartment::create([
+                    'title' => $data,
+                    'type'  => 'type',
+                    'city'  => $city,
+                    'state' => $city,
+                    'dimensions'  => '300 X 300',
+                    'small_room'  => true,
+                    'description' => true,
+                    'available_at'=> '2022-04-10 11:52:23',
+                    'street'=> $city,
+                    'price' => 200,
+                    'class' => 2,
+                ]);
+                
+            }//end of each apartment
+
+        }//end of each citys
+        
+    }//end of run
+
+}//end of seed 
