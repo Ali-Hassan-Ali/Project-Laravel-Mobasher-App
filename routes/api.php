@@ -18,7 +18,11 @@ use App\Http\Controllers\Api\ApartmentController;
 */
 
 Route::get('ping', function() {
-    return "server is up to work 🤡";
+
+    $apartments = \App\Models\Apartment::first();
+
+    return response()->api('server up to work');
+
 });
 
 Route::post('ping/post', function(Request $request) {
