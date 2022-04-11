@@ -12,7 +12,11 @@ use App\Http\Models\User;
 Route::prefix('/user')->group(function () {
 
     Route::get('ping', function() {
-        return "server is up to work 🤡"; 
+
+        $apartments = \App\Models\Apartment::first();
+
+        return response()->api('server up to work');
+
     });
 
     Route::post('ping/post', function(Request $request) {
