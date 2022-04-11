@@ -32,7 +32,7 @@ class CreateApartmentTable extends Migration
             $table->string('lat')->default(15.399073);
             $table->string('lng')->default(32.928336);
             $table->boolean('avilibalty')->default(1);
-            $table->dateTime('available_at')->default(true);
+            $table->dateTime('available_at');
             $table->integer('class')->default(1);
             $table->integer('views')->default(0);
             $table->string('status')->default('waiting');
