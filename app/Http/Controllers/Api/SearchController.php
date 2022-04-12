@@ -18,19 +18,7 @@ class SearchController extends Controller
 
     public function advanced_search(Request $request)
     {
-
-        $apartments = Apartment::where('city' , 'like', "%$request->city%")->limit(5)->get();
-        $apartments = Apartment::where('id' , 'like', "%$request->id%")->limit(5)->get();
-
-        return response()->api($apartments);
-
-        $apartments = Apartment::when($request->all(), function($q) use ($request){
-
-            return $q->where('title', 'like', "%$request->title%")
-                ->orWhere('city', 'like', '%', "%$request->city%")
-                ->orWhere('id', 'like', '%', "%$request->id%");
-
-        })->latest()->limit(2)->get();
+        $apartments = Apartment::WhenSearch($request->search)->limit(5)->get();
 
         return response()->api($apartments);
 
