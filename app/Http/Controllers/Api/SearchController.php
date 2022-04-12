@@ -14,9 +14,10 @@ class SearchController extends Controller
 
         $apartments = Apartment::where('city' , 'like', "%$city%")->get();
 
-        if ($request->search) {
+        return response()->api($apartments);
+        
+        if ($city) {
             
-            return response()->api($apartments);
         }
 
         return response()->api([]);
