@@ -25,6 +25,15 @@ Route::get('ping', function() {
 
 });
 
+
+Route::get('test', function() {
+
+    return $apartments = \App\Models\Apartment::first();
+
+    return response()->api('server up to work');
+
+});
+
 Route::post('ping/post', function(Request $request) {
     return "work post 🤡";
 });

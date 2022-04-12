@@ -14,41 +14,23 @@ class SearchController extends Controller
 
         return response()->api($apartments);
 
-        \Cache::set('Apartment',$apartments ,30*60);//30min
-        $page       = $request->input('page',1);
-
-        return response([
-                'message' => "ok",
-                'error'   => false,
-                'data'    => $apartments->forPage($page,20)->values(),
-                'meta' => [
-                    'total'     => $apartments->count(),
-                    'page'      => $page,
-                    'last_page' => ceil($apartments->count()/20)
-                ]
-            ],200);
-
-
     }//end of search
 
     public function advanced_search(Request $request)
     {
-        $apartments = Apartment::WhenSearch($request->search)->limit(5)->get();
+
+        $apartments = Apartment::where('city' , 'like', "%$request->city%")->limit(5)->get();
+        $apartments = Apartment::where('id' , 'like', "%$request->id%")->limit(5)->get();
 
         return response()->api($apartments);
-        \Cache::set('Apartment',$apartments ,30*60);//30min
-        $page       = $request->input('page',1);
 
-        return response([
-                'message' => "ok",
-                'error'   => false,
-                'data'    => $apartments->forPage($page,20)->values(),
-                'meta' => [
-                    'total'     => $apartments->count(),
-                    'page'      => $page,
-                    'last_page' => ceil($apartments->count()/20)
-                ]
-            ],200);
+        $apartments = Apartment::when($request->all(), function($q) use ($request){
+
+            return $q->where('title', 'like', "%$request->title%")
+                ->orWhere('city', 'like', '%', "%$request->city%")
+                ->orWhere('id', 'like', '%', "%$request->id%");
+
+        })->latest()->limit(2)->get();
 
         return response()->api($apartments);
 
