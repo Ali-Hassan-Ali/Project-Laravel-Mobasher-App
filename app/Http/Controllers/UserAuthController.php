@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Apartment;
 use App\Http\Requests\RegisterRequest;
 
 class UserAuthController extends Controller
@@ -17,11 +16,7 @@ class UserAuthController extends Controller
     protected $decayMinutes = 2; // Default is 1
 
    public function NewAcount(RegisterRequest $request){
-    $city = $request->only('city');
 
-        $apartments = Apartment::where('city' , 'like', "%$city%")->get();
-
-        return response()->api($apartments);
     $checkphone =User::where('phone', '=', $request->only("phone"))->first();
     $checkemail =User::where("Email", '=',$request->only("Email"))->first();
 
