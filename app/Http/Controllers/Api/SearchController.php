@@ -9,8 +9,8 @@ use App\Models\Apartment;
 class SearchController extends Controller
 {
     public function search(Request $request)
-    {   
-        $apartments = Apartment::where('city' , 'like', "%$request->search%")->get();
+    {
+        $apartments = Apartment::where('city' , 'like', "%$request->city%")->get();
 
         if ($request->search) {
             
