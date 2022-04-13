@@ -85,6 +85,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label>@lang('dashboard.floor')</label>
+                            <input type="text" name="number" class="form-control @error('floor') is-invalid @enderror" value="{{ old('floor') }}">
+                            @error('floor')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-plus"></i> @lang('dashboard.add')
                             </button>

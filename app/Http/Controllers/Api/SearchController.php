@@ -10,17 +10,11 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {   
-        $city = $request->only('city');
+        $city = $request->only("city");
 
-        $apartments = Apartment::where('city' , 'like', "%$city%")->get();
+        $apartments = Apartment::where('city' , 'like', "%$city%")->limit(5)->get();
 
         return response()->api($apartments);
-
-        if ($city) {
-            
-        }
-
-        return response()->api([]);
 
     }//end of search
 
@@ -28,12 +22,7 @@ class SearchController extends Controller
     {
         $apartments = Apartment::WhenSearch($request->search)->limit(5)->get();
 
-        if ($request->search) {
-            
-            return response()->api($apartments);
-        }
-
-        return response()->api([]);
+        return response()->api($apartments);
 
     }//end of search
 

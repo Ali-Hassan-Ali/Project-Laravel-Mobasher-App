@@ -38,7 +38,7 @@ Route::post('ping/post', function(Request $request) {
     return "work post 🤡";
 });
 
-Route::post('/search',[SearchController::class,'search']);
+Route::get('/search',[SearchController::class,'search']);
 Route::post('/advanced_search',[SearchController::class,'advanced_search']);
 
 Route::post('/order/store',[OrderController::class,'store']);
