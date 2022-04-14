@@ -13,20 +13,9 @@ Route::prefix('/user')->group(function () {
 
     Route::get('ping', function() {
 
-        $apartments = \App\Models\Apartment::first();
-
         return response()->api('server up to work');
 
     });
-
-    Route::post('ping/post', function(Request $request) {
-        return "work post 🤡"; 
-    });
-    
-
-    Route::post('/search',[UserAuthController::class,'new']);
-    Route::post('/advanced_search',[SearchController::class,'advanced_search']);
-
 
     Route::post('/New_Acount',[UserAuthController::class,'NewAcount']);
     Route::post('/login',[UserAuthController::class,'login'])->name('MoblieLogin');
