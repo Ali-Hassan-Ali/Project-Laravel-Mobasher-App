@@ -16,6 +16,11 @@ class CreateApartmentTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('region')->default('region');
+            $table->string('generator')->default('0');
+            $table->string('kitchen')->default('0');
+            $table->string('fans')->default('0');
+            $table->string('conditioner')->default('0');
             $table->string('type');
             $table->string('image')->default('apartment_images/default.png');
             $table->string('floor')->default(0);
@@ -32,7 +37,7 @@ class CreateApartmentTable extends Migration
             $table->string('lat')->default(15.399073);
             $table->string('lng')->default(32.928336);
             $table->boolean('avilibalty')->default(1);
-            $table->dateTime('available_at');
+            $table->dateTime('available_at')->default(now());
             $table->integer('class')->default(1);
             $table->integer('views')->default(0);
             $table->string('status')->default('waiting');

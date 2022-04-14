@@ -10,7 +10,7 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {   
-        $city = $request->only("city");
+        $city = $request->input('city');
 
         $apartments = Apartment::where('city' , 'like', "%$city%")->limit(5)->get();
 

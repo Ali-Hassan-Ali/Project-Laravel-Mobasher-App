@@ -12,11 +12,16 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title'      => ['required'],
-            'type'       => ['required'],
             'city'       => ['required'],
             'state'      => ['required'],
+            'region'     => ['required'],
             'dimensions' => ['required'],
+            'type'       => ['required'],
+            'floor'      => ['required'],
+            'street'     => ['required'],
+            'title'      => ['required'],
+            'description'=> ['required'],
+            'price'      => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -26,6 +31,8 @@ class ApartmentController extends Controller
         }//end of if
 
         $apartment = Apartment::create($request->all());
+        
+        $apartment = Apartment::findOrFail($apartment->id);
 
         return response()->api($apartment);
 

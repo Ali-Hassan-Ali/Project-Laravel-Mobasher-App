@@ -11,9 +11,9 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'user_id'      => ['required'],
-            'apartment_id' => ['required'],
+        $validator = Validator::make($request->only('user_id','apartment_id'), [
+            'user_id'      => ['required','numeric'],
+            'apartment_id' => ['required','numeric'],
         ]);
 
         if ($validator->fails()) {
@@ -22,16 +22,13 @@ class OrderController extends Controller
 
         }//end of if
 
-        if (Order::where('apartment_id', $request->apartment_id)->first()) {
+        if (Order::where('apartment_id', $request->input("apartment_id"))->first()) {
 
             return response()->api([], 1, 'I_did_the_same_process');
 
         }//end of if
 
-        $order = Order::create([
-            'user_id'      => $request->user_id,
-            'apartment_id' => $request->apartment_id,
-        ]);
+        $order = Order::create($request->only('user_id','apartment_id'));
 
         $order = Order::with('user','apartment')->find($order->id);
 

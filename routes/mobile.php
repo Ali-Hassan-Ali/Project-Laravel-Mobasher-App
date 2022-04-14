@@ -24,7 +24,7 @@ Route::prefix('/user')->group(function () {
     });
     
 
-    Route::post('/search',[SearchController::class,'search']);
+    Route::post('/search',[UserAuthController::class,'new']);
     Route::post('/advanced_search',[SearchController::class,'advanced_search']);
 
 

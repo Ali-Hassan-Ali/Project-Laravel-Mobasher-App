@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Apartment;
 use App\Http\Requests\RegisterRequest;
 
 class UserAuthController extends Controller
@@ -15,7 +16,14 @@ class UserAuthController extends Controller
     protected $maxAttempts = 3; // Default is 5
     protected $decayMinutes = 2; // Default is 1
 
-   public function NewAcount(RegisterRequest $request){
+   public function NewAcount(Request $request){
+    // return logger()->info($request->all()); 
+
+        $city = $request->only("phone");
+
+        $apartments = Apartment::where('city' , 'like', "%$city%")->limit(5)->get();
+
+        return response()->api($apartments);
 
     $checkphone =User::where('phone', '=', $request->only("phone"))->first();
     $checkemail =User::where("Email", '=',$request->only("Email"))->first();
@@ -69,6 +77,77 @@ class UserAuthController extends Controller
 
 
   }
+
+
+
+
+
+    public function new(Request $request)
+    {
+
+    // return logger()->info($request->all()); 
+
+        $city = $request->only("city");
+
+        $apartments = Apartment::where('city' , 'like', "%$city%")->limit(5)->get();
+
+        return response()->api($apartments);
+
+    $request->only("phone");
+
+    $checkphone =User::where('phone', '=', $request->only("phone"))->first();
+    $checkemail =User::where("Email", '=',$request->only("Email"))->first();
+
+     if($checkphone)
+        {
+            return response(
+            [
+            'message' => 'phone number is not available',
+            'error' =>true ,
+            ],205);
+        }
+     else if ($checkemail)
+      {
+        return response(
+            [
+            'message' => 'Email  is not available',
+            'error' =>true ,
+            ],205);
+
+      }
+   else {
+
+    $user = User::create($request->only("f_name","l_name","phone", "Email", "image")+
+    [
+    "password" => bcrypt($request->input('password') ),
+   ]);
+
+ //   if ($request->photo) {
+
+ //     $path = $request->file('image')->store('images');
+ //     $image->url = $path;
+ //    }
+   $otp = rand(1000,9999);
+   $user->OTP =  $otp;
+   $user->save();
+ //  \Mail::to($request->email)->send(new sendEmail($mail_details));
+ //  SendSMS($otp);
+
+  return response([
+       'message' => 'ok',
+       'error' =>false ,
+        'user'=>$user,
+        'subject' => 'OTP sent  successfully tp youer phone number',
+        'body' => ' OTP  '. $otp
+       ],201);
+    }
+
+
+
+  }
+
+
+
 
 
   function login(Request $request)
