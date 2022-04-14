@@ -18,13 +18,13 @@ class OrderController extends Controller
 
         if ($validator->fails()) {
 
-            return response()->api([], 1, $validator->errors()->first());
+            return response()->api([], 'error', $validator->errors()->first());
 
         }//end of if
 
         if (Order::where('apartment_id', $request->input("apartment_id"))->first()) {
 
-            return response()->api([], 1, 'I_did_the_same_process');
+            return response()->api([], 'error', 'I_did_the_same_process');
 
         }//end of if
 
