@@ -14,7 +14,6 @@ class ApartmentController extends Controller
         $validator = Validator::make($request->all(), [
             'city'       => ['required'],
             'state'      => ['required'],
-            'region'     => ['required'],
             'dimensions' => ['required'],
             'type'       => ['required'],
             'floor'      => ['required'],
