@@ -12,15 +12,15 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'city'       => ['required'],
-            // 'state'      => ['required'],
+            'city'       => ['required'],
+            'state'      => ['required'],
             // 'dimensions' => ['required'],
-            // 'type'       => ['required'],
-            // 'floor'      => ['required'],
-            // 'street'     => ['required'],
-            // 'title'      => ['required'],
-            // 'description'=> ['required'],
-            // 'price'      => ['required'],
+            'type'       => ['required'],
+            'floor'      => ['required'],
+            'street'     => ['required'],
+            'title'      => ['required'],
+            'description'=> ['required'],
+            'price'      => ['required'],
         ]);
 
         if ($validator->fails()) {
