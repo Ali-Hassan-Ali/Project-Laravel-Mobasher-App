@@ -22,15 +22,15 @@ class ApartmentController extends Controller
             // 'description'=> ['required'],
             // 'price'      => ['required'],
         ]);
-
+        // $request->fullUrl();
         if ($validator->fails()) {
 
             return response()->api([], 1, $validator->errors()->first());
 
         }//end of if
 
-        // $apartment = Apartment::create(response()->json($request->all()));
-        $apartment = Apartment::create($request->json()->all());
+        $apartment = Apartment::create(response()->json($request->all()));
+        // $apartment = Apartment::create($request->json()->all());
         
         $apartment = Apartment::findOrFail($apartment->id);
 
