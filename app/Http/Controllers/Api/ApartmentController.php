@@ -25,7 +25,7 @@ class ApartmentController extends Controller
         // $request->fullUrl();
         if ($validator->fails()) {
 
-            return response()->api([], false, $validator->errors()->first());
+            return response()->api([], true, $validator->errors()->first());
 
         }//end of if
 
