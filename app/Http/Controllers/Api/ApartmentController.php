@@ -29,7 +29,7 @@ class ApartmentController extends Controller
 
         }//end of if
 
-        $apartment = Apartment::create(response()->json($request->all()));
+        $apartment = Apartment::create($request->only('city'));
         // $apartment = Apartment::create($request->json()->all());
         
         $apartment = Apartment::findOrFail($apartment->id);
