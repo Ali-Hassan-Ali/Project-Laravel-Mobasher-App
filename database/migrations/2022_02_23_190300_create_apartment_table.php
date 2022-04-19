@@ -16,6 +16,7 @@ class CreateApartmentTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->string('rooms')->default('region');
             $table->string('region')->default('region');
             $table->string('generator')->default('0');
             $table->string('kitchen')->default('0');
