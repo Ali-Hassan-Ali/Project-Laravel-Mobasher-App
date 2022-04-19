@@ -35,7 +35,7 @@ class CreateApartmentTable extends Migration
             $table->integer('extra_large_room')->default(true);
             $table->string('street')->default('street');
             $table->longText('description')->nullable();
-            $table->integer('price')->nullable();
+            $table->string('price')->nullable();
             $table->string('lat')->default(15.399073);
             $table->string('lng')->default(32.928336);
             $table->boolean('avilibalty')->default(1);
