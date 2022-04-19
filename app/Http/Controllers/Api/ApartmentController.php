@@ -20,6 +20,7 @@ class ApartmentController extends Controller
             'rooms'      => ['required'],
             'dimensions' => ['required'],
             'description'=> ['required'],
+            'user_id'    => ['required'],
         ]);
         // $request->fullUrl();
         if ($validator->fails()) {
@@ -37,6 +38,7 @@ class ApartmentController extends Controller
                                         'rooms' => $request->input('rooms'),
                                         'dimensions'  => $request->input('dimensions'),
                                         'description' => $request->input('description'),
+                                        'user_id'     => $request->input('user_id'),
                                        ]);
         
         $apartment = Apartment::findOrFail($apartment->id);

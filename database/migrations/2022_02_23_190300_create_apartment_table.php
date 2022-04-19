@@ -20,6 +20,7 @@ class CreateApartmentTable extends Migration
             $table->string('region')->default('region');
             $table->string('generator')->default('0');
             $table->string('kitchen')->default('0');
+            $table->string('user_id')->nullable();
             $table->string('fans')->default('0');
             $table->string('conditioner')->default('0');
             $table->string('type')->nullable();
