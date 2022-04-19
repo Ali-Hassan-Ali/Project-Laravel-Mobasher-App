@@ -25,7 +25,7 @@ class ApartmentController extends Controller
         // $request->fullUrl();
         if ($validator->fails()) {
 
-            return response()->api([], 1, $validator->errors()->first());
+            return response()->api([], false, $validator->errors()->first());
 
         }//end of if
 
@@ -50,7 +50,7 @@ class ApartmentController extends Controller
         //                                 'description' => $request->input('description'),
         //                                 'user_id'     => $request->input('user_id'),
         //                                ]);
-        
+            
         $apartment = Apartment::findOrFail($apartment->id);
 
         return response()->api($apartment);
