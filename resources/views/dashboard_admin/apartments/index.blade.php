@@ -62,6 +62,7 @@
                                     <th>@lang('dashboard.city')</th>
                                     <th>@lang('dashboard.status')</th>
                                     <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.image')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
                                 </thead>
@@ -75,6 +76,7 @@
                                         <td>{{ $apartment->city }}</td>
                                         <td>{{ $apartment->status }}</td>
                                         <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
+                                        <td><img src="{{ $apartment->image_path }}" width="70"></td>
                                         <td>
                                             @if (auth()->user()->hasPermission('apartments_update'))
                                                 <a href="{{ route('dashboard.admin.apartments.edit', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
