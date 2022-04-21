@@ -23,7 +23,7 @@ class SearchController extends Controller
         $apartments = Apartment::where('city', 'like', '%' . $request->input('city') . '%')
                                  ->orWhere('state', 'like', '%' . $request->input('state') . '%')
                                  ->orWhere('price', 'like', '%' . $request->input('price') . '%')
-                                 // ->orWhere('rooms', 'like', '%' . $request->input('rooms') . '%')
+                                 ->orWhere('rooms', 'like', '%' . $request->input('rooms') . '%')
                                  ->orWhere('region', 'like', '%' . $request->input('region') . '%')
                                  ->latest()->get();
 
