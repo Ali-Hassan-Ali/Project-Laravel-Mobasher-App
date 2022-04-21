@@ -39,14 +39,9 @@ class ApartmentController extends Controller
                                                       'dimensions',
                                                       'description',
                                                       'user_id'));
-        if ($request->file('image')) {
-
-            $apartment->update([
-                'image' => $request->file('image')->store('apartment_images', 'public'),
-            ]);
-
-        }//end of if
-
+        $apartment->update([
+            'image' => $request->file('image')->store('apartment_images', 'public'),
+        ]);
             
         $apartment = Apartment::findOrFail($apartment->id);
 
