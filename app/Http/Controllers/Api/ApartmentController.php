@@ -21,6 +21,7 @@ class ApartmentController extends Controller
             'dimensions' => ['required'],
             'description'=> ['required'],
             'user_id'    => ['required'],
+            'image'      => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -38,6 +39,14 @@ class ApartmentController extends Controller
                                                       'dimensions',
                                                       'description',
                                                       'user_id'));
+        if ($request->file('image')) {
+
+            $apartment->update([
+                'image' => $request->file('image')->store('apartment_images', 'public'),
+            ]);
+
+        }//end of if
+
             
         $apartment = Apartment::findOrFail($apartment->id);
 
