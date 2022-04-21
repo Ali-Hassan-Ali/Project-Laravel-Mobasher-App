@@ -20,7 +20,12 @@ class SearchController extends Controller
 
     public function advanced_search(Request $request)
     {
-        $apartments = Apartment::WhenSearch($request->search)->limit(5)->get();
+        $apartments = Apartment::where('city', 'like', '%' . $request->input('city') . '%')
+                                 ->orWhere('state', 'like', '%' . $request->input('state') . '%')
+                                 ->orWhere('price', 'like', '%' . $request->input('price') . '%')
+                                 // ->orWhere('rooms', 'like', '%' . $request->input('rooms') . '%')
+                                 ->orWhere('region', 'like', '%' . $request->input('region') . '%')
+                                 ->latest()->get();
 
         return response()->api($apartments);
 

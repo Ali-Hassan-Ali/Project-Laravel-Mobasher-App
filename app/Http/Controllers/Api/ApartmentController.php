@@ -22,7 +22,7 @@ class ApartmentController extends Controller
             'description'=> ['required'],
             'user_id'    => ['required'],
         ]);
-        // $request->fullUrl();
+
         if ($validator->fails()) {
 
             return response()->api([], true, $validator->errors()->first());
@@ -38,18 +38,6 @@ class ApartmentController extends Controller
                                                       'dimensions',
                                                       'description',
                                                       'user_id'));
-
-        // $apartment = Apartment::create([$request->input('city')
-        //                                 'city'  => ,
-        //                                 'state' => $request->input('state'),
-        //                                 'type'  => $request->input('type'),
-        //                                 'floor' => $request->input('floor'),
-        //                                 'price' => $request->input('price'),
-        //                                 'rooms' => $request->input('rooms'),
-        //                                 'dimensions'  => $request->input('dimensions'),
-        //                                 'description' => $request->input('description'),
-        //                                 'user_id'     => $request->input('user_id'),
-        //                                ]);
             
         $apartment = Apartment::findOrFail($apartment->id);
 
@@ -58,3 +46,5 @@ class ApartmentController extends Controller
     }//end of fun
 
 }//end of controller
+
+// city state price rooms region
