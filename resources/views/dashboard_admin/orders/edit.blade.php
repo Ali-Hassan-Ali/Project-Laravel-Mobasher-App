@@ -58,7 +58,7 @@
                             $status = ['waiting','accept','cancel'];
                         @endphp
                         <div class="form-group d-none">
-                            <label>@lang('dashboard.users')</label>
+                            <label>@lang('dashboard.status')</label>
                             <select class="form-control" required name="status">
                                 <option value="">@lang('dashboard.select')</option>
                                 @foreach ($status as $status)

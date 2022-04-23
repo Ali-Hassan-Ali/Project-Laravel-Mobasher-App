@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Admin\Auth\ProfileController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
+use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\ApartmentController;
 use App\Http\Controllers\Dashboard\Admin\OrderController;
 use App\Http\Controllers\Dashboard\Admin\CityController;
@@ -26,7 +27,11 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     //admins routes
     Route::resource('admins', AdminController::class)->except(['show']);
 
+    //users routes
+    Route::resource('users', UserController::class)->except(['show']);
+
     //apartments routes
+    Route::get('status/{apartment}', [ApartmentController::class,'status'])->name('apartments.status');
     Route::resource('apartments', ApartmentController::class);
 
     //orders routes

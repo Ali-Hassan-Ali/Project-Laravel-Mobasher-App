@@ -59,10 +59,11 @@
                                     <th>#</th>
                                     <th>@lang('dashboard.title')</th>
                                     <th>@lang('dashboard.type')</th>
+                                    {{-- <th>@lang('dashboard.city')</th> --}}
                                     <th>@lang('dashboard.city')</th>
                                     <th>@lang('dashboard.status')</th>
-                                    <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.image')</th>
+                                    <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
                                 </thead>
@@ -74,9 +75,20 @@
                                         <td>{{ $apartment->title }}</td>
                                         <td>{{ $apartment->type }}</td>
                                         <td>{{ $apartment->city }}</td>
-                                        <td>{{ $apartment->status }}</td>
-                                        <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            {{ $apartment->status == false ? 'warning' : 'success' }}
+                                            @if (auth()->user()->hasPermission('apartments_status'))
+                                                <a href="{{ route('dashboard.admin.apartments.status', $apartment->id) }}" class="btn btn-{{ $apartment->status == false ? 'danger' : 'success' }} btn-sm">
+                                                    <i class="fa fa-eye"></i> 
+                                                </a>
+                                            @else
+                                                <a href="#" class="btn btn-{{ $apartment->status == false ? 'danger' : 'success' }} btn-sm disabled">
+                                                    <i class="fa fa-edit"></i> 
+                                                </a>
+                                            @endif
+                                        </td>
                                         <td><img src="{{ $apartment->image_path }}" width="70"></td>
+                                        <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('apartments_update'))
                                                 <a href="{{ route('dashboard.admin.apartments.edit', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
@@ -92,7 +104,9 @@
                                             @else
                                                 <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
                                             @endif
-                                            <a href="{{ route('dashboard.admin.apartments.show', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> @lang('dashboard.status')</a>
+                                            @if (auth()->user()->hasPermission('apartments_read'))
+                                                <a href="{{ route('dashboard.admin.apartments.show', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> @lang('dashboard.show')</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 

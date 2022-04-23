@@ -2,8 +2,11 @@
 
 return [
 
+    'dashboard_admin' => 'لوحة التحكم',
+    'statistics'      => 'الاحصائيات',
+
     'dashboard'    => 'الرئيسية',
-    'my_salat'     => 'صالتي',
+    'mobasher_app' => 'تطبيق مباشر',
     'calendar'     => 'تقويم',
     'sales_graph'  => 'الاحصائيات',
     'setting'      => 'الاعدادات',

@@ -42,7 +42,7 @@ class CreateApartmentTable extends Migration
             $table->dateTime('available_at')->default(now());
             $table->integer('class')->default(1);
             $table->integer('views')->default(0);
-            $table->string('status')->default('waiting');
+            $table->string('status')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

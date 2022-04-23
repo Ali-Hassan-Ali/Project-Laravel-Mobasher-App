@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>@yield('title')</title>
+    <title>@lang('dashboard.dashboard_admin') | @yield('title')</title>
     <link rel="icon" type="image/svg" href="{{ asset('home_files/image/LOG.png') }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -36,9 +36,11 @@
 
 
     <style>
-        .is-invalid {
+        .text-danger {
             color: red !important;
-            border: red solid 1px;
+        }
+        .is-invalid {
+            border: solid red 1px !important;
         }
         .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a, .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a, .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a
         {

@@ -13,7 +13,7 @@
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.admin.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
                 <li><a href="{{ route('dashboard.admin.orders.index') }}"> @lang('dashboard.orders')</a></li>
-                <li class="active">@lang('dashboard.edit')</li>
+                <li class="active">@lang('dashboard.status')</li>
             </ol>
 
         </section>
@@ -23,7 +23,7 @@
             <div class="box box-primary">
 
                 <div class="box-header">
-                    <h3 class="box-title">@lang('dashboard.edit')</h3>
+                    <h3 class="box-title">@lang('dashboard.status')</h3>
                 </div><!-- end of box header -->
 
                 <div class="box-body">
@@ -41,7 +41,7 @@
                         @endphp
 
                         <div class="form-group d-none">
-                            <label>@lang('dashboard.users')</label>
+                            <label>@lang('dashboard.status')</label>
                             <select class="form-control" required name="status">
                                 <option value="">@lang('dashboard.select')</option>
                                 @foreach ($status as $status)

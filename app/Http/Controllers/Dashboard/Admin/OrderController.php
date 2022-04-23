@@ -43,13 +43,15 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'apartment_id' => ['required'],
-            'user_id'      => ['required'],
+            'apartment_id' => ['required','numeric'],
+            'user_id'      => ['required','numeric'],
             'status'       => ['required'],
         ]);
 
         try {
 
+            $request->all();
+            $request['total_price'] = Apartment::find($request->apartment_id)->price;
             Order::create($request->all());
 
             session()->flash('success', __('dashboard.added_successfully'));
@@ -84,12 +86,15 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'apartment_id' => ['required'],
-            'user_id'      => ['required'],
+            'apartment_id' => ['required','numeric'],
+            'user_id'      => ['required','numeric'],
             'status'       => ['required'],
         ]);
 
         try {
+
+            $request->all();
+            $request['total_price'] = Apartment::find($request->apartment_id)->price;
 
             $order->update($request->all());
 

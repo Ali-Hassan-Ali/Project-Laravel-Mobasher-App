@@ -71,7 +71,7 @@
                                 @csrf
                             </form>
 
-                            <a href="/" class="btn btn-default btn-flat">@lang('dashboard.home')</a>
+                            <a href="/" class="btn btn-default btn-flat">@lang('dashboard.dashboard')</a>
                             {{-- <a href="{{ route('dashboard.profile.edit') }}" class="btn btn-default btn-flat">@lang('home.profile')</a> --}}
 
                         </li>

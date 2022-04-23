@@ -164,4 +164,22 @@ class ApartmentController extends Controller
 
     }//endof destroy
 
+    public function status(Apartment $apartment)
+    {
+
+        try {
+
+            $apartment->update(['status' => $apartment->status == false ? true : false]);
+
+            session()->flash('success', __('dashboard.updated_successfully'));
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
+
+    }//end of apartments status
+
 }//end of controller

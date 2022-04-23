@@ -117,9 +117,9 @@
 
                                 @foreach ($models as $index=>$model)
 
-                                    {{-- @if ($model == 'settings')
+                                    {{-- @if ($model == 'orders')
                                         @php
-                                            $maps = ['read'];
+                                            $maps = ['status'];
                                         @endphp
                                     @endif --}}
 

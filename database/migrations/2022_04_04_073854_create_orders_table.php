@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Apartment::class);
             $table->foreignIdFor(\App\Models\User::class);
+            $table->integer('total_price')->default('0');
             $table->string('status')->default('waiting');
             $table->timestamps();
         });

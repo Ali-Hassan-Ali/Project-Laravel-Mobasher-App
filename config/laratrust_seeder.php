@@ -16,9 +16,10 @@ return [
         'super_admin' => [
             'dashboard'  => 'r',
             'admins'     => 'c,r,u,d',
-            'orders'     => 'c,r,u,d',
+            'users'      => 'c,r,u,d',
+            'orders'     => 'c,r,u,d,s',
             'citys'      => 'c,r,u,d',
-            'apartments' => 'c,r,u,d',
+            'apartments' => 'c,r,u,d,s',
         ],
 
         'admin' => [
@@ -30,6 +31,7 @@ return [
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
-        'd' => 'delete'
+        'd' => 'delete',
+        's' => 'status'
     ]
 ];
