@@ -32,8 +32,9 @@ class OrderController extends Controller
     
     public function create()
     {
-        $apartments = Apartment::all();
-        $users      = User::all();
+        $apartmentId    = Order::pluck('apartment_id');
+        $apartments     = Apartment::whereNotIn('id', $apartmentId)->get();
+        $users          = User::all();
 
         return view('dashboard_admin.orders.create', compact('users','apartments'));
 
@@ -75,8 +76,9 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        $apartments = Apartment::all();
-        $users      = User::all();
+        $apartmentId    = Order::pluck('apartment_id');
+        $apartments     = Apartment::whereNotIn('id', $apartmentId)->get();
+        $users          = User::all();
 
         return view('dashboard_admin.orders.edit', compact('order','apartments','users'));
 

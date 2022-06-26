@@ -41,6 +41,11 @@ class Apartment extends Model
         return $this->hasMany(media::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     //scopes -------------------------------------
     public function scopeWhenSearch($query , $search) 
     {

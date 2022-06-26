@@ -43,6 +43,7 @@ class CreateApartmentTable extends Migration
             $table->integer('class')->default(1);
             $table->integer('views')->default(0);
             $table->string('status')->default(false);
+            $table->foreignIdFor(\App\Models\Category::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

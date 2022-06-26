@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ApartmentSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(OrderTableSeeder::class);
+        $this->call(CategorysTableSeeder::class);
         
     }//end of run
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ApartmentController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ use App\Http\Controllers\Api\ApartmentController;
 Route::get('ping', function() {
     return response()->api('server up to work');
 });
+
+Route::get('/categorys',[CategoryController::class,'index']);
+
 
 Route::post('/search',[SearchController::class,'search']);
 Route::post('/advanced_search',[SearchController::class,'advanced_search']);
