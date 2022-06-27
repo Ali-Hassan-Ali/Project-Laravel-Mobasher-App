@@ -9,6 +9,15 @@ use App\Models\Apartment;
 
 class ApartmentController extends Controller
 {
+
+    public function index()
+    {
+        $apartments = Apartment::with('images','properties')->where('status', 1)->get();
+
+        return response()->api($apartments);
+
+    }//end of index
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

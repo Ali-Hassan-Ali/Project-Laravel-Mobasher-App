@@ -11,6 +11,14 @@ class City extends Model
 
     protected $fillable = ['name'];
 
+    //relation -------------------------------------
+
+    public function parent()
+    {
+        return $this->hasOne(City::class, 'parent_id');
+
+    }//end of fun
+
     //scopes -------------------------------------
     public function scopeWhenSearch($query , $search) 
     {

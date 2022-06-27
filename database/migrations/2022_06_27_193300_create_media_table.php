@@ -15,9 +15,9 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('image_path')->nullable();
-            $table->unsignedBigInteger('apartment_id');
+            $table->string('name');
+            $table->string('image')->default('media_images/default.png');
+            $table->foreignIdFor(\App\Models\Apartment::class);
             $table->timestamps();
         });
     }

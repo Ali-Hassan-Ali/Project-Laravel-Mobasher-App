@@ -16,12 +16,18 @@ class Apartment extends Model
 
     protected $guarded = [];
     protected $hidden  = ['deleted_at'];
-    protected $appends = ['image_path'];
+    protected $appends = ['image_path','categorey_name'];
 
     //attributes----------------------------------
     public function getImagePathAttribute()
     {
-        return asset('storage/' . $this->image);
+        return asset('storage/' . Media::first()->image_path);
+
+    }//end of get image path
+
+    public function getCategoreyNameAttribute()
+    {
+        return Category::findOrFail($this->category_id)->name;
 
     }//end of get image path
 
@@ -38,12 +44,17 @@ class Apartment extends Model
 
     public function images()
     {
-        return $this->hasMany(media::class);
+        return $this->hasMany(Media::class);
     }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function properties()
+    {
+        return $this->hasMany(Propertie::class);
     }
 
     //scopes -------------------------------------

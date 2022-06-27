@@ -12,7 +12,7 @@ class UserApartmenttController extends Controller
     public function fecthApartment(Request $request)
         {
         //composer dump-autoload
-            $apartment =Apartment::with('images')->where('avilibalty', 1)->latest()->get();
+            $apartment =Apartment::with('images','property')->where('avilibalty', 1)->latest()->get();
 
             $total=$apartment->count();
             $page =$request->input('page',1);
