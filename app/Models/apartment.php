@@ -16,7 +16,7 @@ class Apartment extends Model
 
     protected $guarded = [];
     protected $hidden  = ['deleted_at'];
-    protected $appends = ['image_path','categorey_name'];
+    protected $appends = ['image_path','categorey_name','city','region'];
 
     //attributes----------------------------------
     public function getImagePathAttribute()
@@ -31,10 +31,22 @@ class Apartment extends Model
 
     }//end of get image path
 
-    //relations ----------------------------------
-    public function Rents()
+    public function getCityAttribute()
     {
-        return $this->hasMany(Rent::class);
+        return City::findOrFail($this->city_id)->name;
+
+    }//end of get image path
+
+    public function getRegionAttribute()
+    {
+        return City::findOrFail($this->region_id)->name;
+
+    }//end of get image path
+
+    //relations ----------------------------------
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
     }
 
     public function user()

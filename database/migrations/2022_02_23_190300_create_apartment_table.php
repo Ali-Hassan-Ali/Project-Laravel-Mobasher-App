@@ -15,35 +15,22 @@ class CreateApartmentTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('rooms')->default('region');
-            $table->string('region')->default('region');
-            $table->string('generator')->default('0');
-            $table->string('kitchen')->default('0');
-            $table->string('user_id')->nullable();
-            $table->string('fans')->default('0');
-            $table->string('conditioner')->default('0');
-            $table->string('type')->nullable();
-            $table->string('image')->default('apartment_images/default.png');
-            $table->string('floor')->default(0);
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('dimensions')->nullable();
-            $table->integer('small_room')->default(true);
-            $table->integer('medium_room')->default(true);
-            $table->integer('large_room')->default(true);
-            $table->integer('extra_large_room')->default(true);
-            $table->string('street')->default('street');
-            $table->longText('description')->nullable();
-            $table->string('price')->nullable();
-            $table->string('lat')->default(15.399073);
-            $table->string('lng')->default(32.928336);
-            $table->boolean('avilibalty')->default(1);
-            $table->dateTime('available_at')->default(now());
-            $table->integer('class')->default(1);
+            $table->string('title');
+            $table->string('location_floor')->default(0);
+
+            $table->boolean('status')->default(true);
+
+            $table->text('description');
+
+            $table->integer('number_rooms')->default(0);
+            $table->integer('price')->default(0);
             $table->integer('views')->default(0);
-            $table->string('status')->default(true);
-            $table->foreignIdFor(\App\Models\Category::class)->nullable();
+            $table->integer('region_id');
+
+            $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignIdFor(\App\Models\Owner::class);
+            $table->foreignIdFor(\App\Models\City::class);
+            $table->foreignIdFor(\App\Models\Category::class);
             $table->softDeletes();
             $table->timestamps();
         });
