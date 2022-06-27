@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\ApartmentController;
 use App\Http\Controllers\Dashboard\Admin\OrderController;
 use App\Http\Controllers\Dashboard\Admin\CityController;
+use App\Http\Controllers\Dashboard\Admin\CategoryController;
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 
 
@@ -26,6 +27,9 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
 
     //admins routes
     Route::resource('admins', AdminController::class)->except(['show']);
+
+    //admins routes
+    Route::resource('categorys', CategoryController::class)->except(['show']);
 
     //users routes
     Route::resource('users', UserController::class)->except(['show']);

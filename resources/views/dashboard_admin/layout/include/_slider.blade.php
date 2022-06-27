@@ -31,6 +31,12 @@
                 </li>
             @endif
 
+            @if (auth()->guard('admin')->user()->hasPermission('categorys_read'))
+                <li class="{{ request()->segment(3) == 'admins' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.admin.categorys.index') }}"><i class="fa fa-list-alt"></i><span>@lang('dashboard.categorys')</span></a>
+                </li>
+            @endif
+
             @if (auth()->guard('admin')->user()->hasPermission('apartments_read'))
                 <li class="{{ request()->segment(3) == 'apartments' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.admin.apartments.index') }}"><i class="fa fa-hospital-alt"></i><span>@lang('dashboard.apartments')</span></a>

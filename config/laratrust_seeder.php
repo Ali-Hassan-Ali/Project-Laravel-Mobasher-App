@@ -19,6 +19,7 @@ return [
             'users'      => 'c,r,u,d',
             'orders'     => 'c,r,u,d,s',
             'citys'      => 'c,r,u,d',
+            'categorys'  => 'c,r,u,d',
             'apartments' => 'c,r,u,d,s',
         ],
 
