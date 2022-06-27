@@ -21,7 +21,7 @@ class Apartment extends Model
     //attributes----------------------------------
     public function getImagePathAttribute()
     {
-        return asset('storage/' . Media::first()->image_path);
+        return Media::first()->image_path
 
     }//end of get image path
 
