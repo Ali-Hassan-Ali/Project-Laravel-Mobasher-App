@@ -28,6 +28,7 @@ Route::get('/aparments',[ApartmentController::class,'index']);
 Route::get('/aparments/{id}',[ApartmentController::class,'show']);
 
 
+Route::get('/search/{search}',[SearchController::class,'search']);
 Route::post('/search',[SearchController::class,'search']);
 Route::post('/advanced_search',[SearchController::class,'advanced_search']);
 

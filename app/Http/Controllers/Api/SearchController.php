@@ -8,23 +8,23 @@ use App\Models\Apartment;
 
 class SearchController extends Controller
 {
-    public function search(Request $request)
-    {   
-        $city = $request->input('city');
+    // public function search(Request $request)
+    // {   
+    //     $city = $request->input('city');
 
-        $apartments = Apartment::where('city' , 'like', "%$city%")->limit(5)->get();
+    //     $apartments = Apartment::where('city' , 'like', "%$city%")->limit(5)->get();
 
-        return response()->api($apartments);
+    //     return response()->api($apartments);
 
-    }//end of search
+    // }//end of search
 
-    public function advanced_search(Request $request)
+    public function search($search)
     {
-        $apartments = Apartment::where('city', 'like', '%' . $request->input('city') . '%')
-                                 ->orWhere('state', 'like', '%' . $request->input('state') . '%')
-                                 ->orWhere('price', 'like', '%' . $request->input('price') . '%')
-                                 ->orWhere('rooms', 'like', '%' . $request->input('rooms') . '%')
-                                 ->orWhere('region', 'like', '%' . $request->input('region') . '%')
+        $apartments = Apartment::where('title', 'like', "%$search%")
+                                 ->orWhere('location_floor', 'like', "%$search%")
+                                 ->orWhere('description', 'like', "%$search%")
+                                 ->orWhere('number_rooms', 'like', "%$search%")
+                                 ->orWhere('price', 'like', "%$search%")
                                  ->latest()->get();
 
         return response()->api($apartments);
