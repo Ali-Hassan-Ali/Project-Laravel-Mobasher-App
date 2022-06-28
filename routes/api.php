@@ -25,6 +25,7 @@ Route::get('ping', function() {
 Route::get('/categorys',[CategoryController::class,'index']);
 
 Route::get('/aparments',[ApartmentController::class,'index']);
+Route::get('/aparments/{id}',[ApartmentController::class,'show']);
 
 
 Route::post('/search',[SearchController::class,'search']);
