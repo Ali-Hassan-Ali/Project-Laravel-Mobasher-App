@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Apartment;
+use App\Models\Category;
 
 class ApartmentController extends Controller
 {
 
     public function index()
     {
-        $apartments = Apartment::with('images','properties')->where('status', 1)->get();
-
+        $apartments['apartment'] = Apartment::with('images','properties')->where('status', 1)->get();
+        $apartments['category']  = 'fdf';
+        
         return response()->api($apartments);
 
     }//end of index
@@ -21,10 +23,14 @@ class ApartmentController extends Controller
 
     public function show($id)
     {
-        $apartments = Apartment::where('category_id', $id)
-                               ->with('images','properties')
-                               ->where('status', 1)
-                               ->get();
+        $category = Category::findOrFail($id);
+
+        $apartments['apartmens'] = Apartment::where('category_id', $category->id)
+                                               ->with('images','properties')
+                                               ->where('status', 1)
+                                               ->get();
+
+        $apartments['category'] = $category->name;
 
         return response()->api($apartments);
 

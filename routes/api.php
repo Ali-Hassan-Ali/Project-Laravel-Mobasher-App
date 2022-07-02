@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('ping', function() {
 Route::get('/categorys',[CategoryController::class,'index']);
 
 Route::get('/aparments',[ApartmentController::class,'index']);
-Route::get('/aparments/{id}',[ApartmentController::class,'show']);
+Route::get('/aparments/{category}',[ApartmentController::class,'show']);
 
 
 Route::get('/search/{search}',[SearchController::class,'search']);
@@ -38,4 +39,14 @@ Route::post('/apartments/store',[ApartmentController::class,'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// user login and register and update
+Route::post('login', [AuthController::class,'login']);
+Route::post('/user_update', [AuthController::class,'update_user']);
+
+Route::middleware('auth:sanctum')->group(function () {    
+
+    Route::get('/user', [AuthController::class,'user']);
+    
 });

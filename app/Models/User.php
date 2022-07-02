@@ -14,22 +14,19 @@ class User extends Authenticatable
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $guarded = [];
-    protected $appends = ['name','image_path'];
-    protected $hidden  = ['password'];
-    protected $casts   = ['Email_verified_at' => 'datetime'];
+    protected $guarded  = [];
+    
+    protected $hidden   = ['password','remember_token'];
+    
+    protected $casts    = ['email_verified_at' => 'datetime'];
+
+    protected $appends  = ['image_path'];
 
     public function Rents()
     {
         return $this->hasMany(Rent::class);
 
     }//endo frents
-
-    public function getNameAttribute()
-    {
-        return $this->f_name . $this->l_name;
-
-    }//end of name
 
     public function getImagePathAttribute()
     {
@@ -41,8 +38,8 @@ class User extends Authenticatable
     {
         return $query->when($search, function ($q) use ($search) {
 
-            return $q->where('f_name' , 'like', "%$search%")
-            ->orWhere('l_name', 'like', "%$search%")
+            return $q->where('id' , 'like', "%$search%")
+            ->orWhere('username', 'like', "%$search%")
             ->orWhere('phone', 'like', "%$search%")
             ->orWhere('Email', 'like', "%$search%");
         });
