@@ -1,0 +1,5 @@
+body{
+  background: url(.././images/bg.jfif) no-repeat center center fixed;
+  background-size: cover;
+  /*direction: rtl;*/
+}
