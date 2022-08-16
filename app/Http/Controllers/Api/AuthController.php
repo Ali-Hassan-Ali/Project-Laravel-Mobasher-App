@@ -47,7 +47,7 @@ class AuthController extends Controller
         // $credentials = $request->only('phone', 'password');
 
         // if (auth()->attempt($credentials)) {
-        if (auth()->login($login)) {
+        if (auth()->login($user)) {
 
             $user          = auth()->user();
             $data['user']  = new UserResource($user);
