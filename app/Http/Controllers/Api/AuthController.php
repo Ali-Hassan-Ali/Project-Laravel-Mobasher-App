@@ -36,7 +36,7 @@ class AuthController extends Controller
         }//end of image
 
         $user = User::where('phone', $request->phone)->first();
-
+        
         if (!$user) {
             
             $user = User::create($request_data);
