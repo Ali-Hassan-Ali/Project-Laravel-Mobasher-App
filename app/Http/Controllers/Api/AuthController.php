@@ -26,12 +26,12 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->api([], 1, $validator->errors()->first(), 422);
         }
-        $request_data = $request->except('image');
-        $request_data['password'] = bcrypt('123123123');
 
         if($request->image) {
 
-             $request_data['image'] = $request->file('image')->store('user_images','public');
+            $request_data             = $request->except('image');
+            $request_data['password'] = bcrypt('123123123');
+            $request_data['image']    = $request->file('image')->store('user_images','public');
 
         }//end of image
 
@@ -43,10 +43,11 @@ class AuthController extends Controller
         }
 
 
-        $request['password'] = '123123123';
-        $credentials = $request->only('phone', 'password');
+        // $request['password'] = '123123123';
+        // $credentials = $request->only('phone', 'password');
 
-        if (auth()->attempt($credentials)) {
+        // if (auth()->attempt($credentials)) {
+        if (auth()->login($login)) {
 
             $user          = auth()->user();
             $data['user']  = new UserResource($user);
