@@ -27,10 +27,11 @@ class AuthController extends Controller
             return response()->api([], 1, $validator->errors()->first(), 422);
         }
 
+        $request_data             = $request->except('image');
+        $request_data['password'] = bcrypt('123123123');
+        
         if($request->image) {
 
-            $request_data             = $request->except('image');
-            $request_data['password'] = bcrypt('123123123');
             $request_data['image']    = $request->file('image')->store('user_images','public');
 
         }//end of image
