@@ -43,11 +43,10 @@ class AuthController extends Controller
         }
 
 
-        // $request['password'] = '123123123';
-        // $credentials = $request->only('phone', 'password');
+        $request['password'] = '123123123';
+        $credentials         = $request->only('phone', 'password');
 
-        // if (auth()->attempt($credentials)) {
-        if (auth()->login($user)) {
+        if (Auth::attempt($credentials)) {
 
             $user          = auth()->user();
             $data['user']  = new UserResource($user);
