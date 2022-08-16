@@ -8,8 +8,10 @@ use App\Http\Controllers\Dashboard\Admin\AdminController;
 use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\ApartmentController;
 use App\Http\Controllers\Dashboard\Admin\OrderController;
-use App\Http\Controllers\Dashboard\Admin\CityController;
 use App\Http\Controllers\Dashboard\Admin\CategoryController;
+use App\Http\Controllers\Dashboard\Admin\OwnerController;
+use App\Http\Controllers\Dashboard\Admin\CityController;
+use App\Http\Controllers\Dashboard\Admin\RegionController;
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 
 
@@ -34,6 +36,9 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     //users routes
     Route::resource('users', UserController::class)->except(['show']);
 
+    //owners routes
+    Route::resource('owners', OwnerController::class)->except(['show']);
+
     //apartments routes
     Route::get('status/{apartment}', [ApartmentController::class,'status'])->name('apartments.status');
     Route::resource('apartments', ApartmentController::class);
@@ -43,6 +48,8 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
 
     //citys routes
     Route::resource('citys', CityController::class)->except(['show']);
+
+    Route::resource('regions', RegionController::class)->except(['show']);
 
 
 }); //end of dashboard routes

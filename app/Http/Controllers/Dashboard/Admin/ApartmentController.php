@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ApartmentRequest;
 use App\Models\City;
 use App\Models\Apartment;
+use App\Models\Category;
+use App\Models\Owner;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
@@ -32,113 +36,125 @@ class ApartmentController extends Controller
 
     public function create()
     {
-        $citys = City::all();
+        $regions   = City::where('parent_id', '>', '0')->get();
+        $citys     = City::all();
+        $categorys = Category::all();
+        $owners    = Owner::all();
 
-        return view('dashboard_admin.apartments.create', compact('citys'));
+        return view('dashboard_admin.apartments.create', compact('citys', 'categorys', 'regions', 'citys', 'owners'));
 
     }//end of create
 
 
-    public function store(Request $request)
+    public function store(ApartmentRequest $request)
     {
-         $request->validate([
-            'name'  => ['required','max:255'],
-            'image' => ['required','image'],
-            'city'  => ['required','max:255'],
-            'state' => ['required','max:255'],
-            'dimensions'  => ['required'],
-            'description' => ['required'],
-            'lat' => ['required','numeric'],
-            'lng' => ['required','numeric'],
-            'price' => ['required','numeric'],
-            'avilibalty'   => ['required'],
-            'available_at' => ['required'],
-            'class'        => ['required'],
-        ]);
 
-        try {
+        $validated = $request->validated();
+        $validated = $request->safe()->except(['video', 'ownership', 'national_card']);
+        if ($request->video) {
+            $validated['video'] = $request->file('video')->store('video_file', 'public');
+        }
 
-            $request_data = $request->except(['image']);
+        if ($request->ownership) {
+            $validated['ownership'] = $request->file('ownership')->store('ownership_file', 'public');
+        }
 
-            if ($request->image) {
-
-                $request_data['image'] = $request->file('image')->store('apartment_images','public');
-
-            } //end of if
+        if ($request->national_card) {
+            $validated['national_card'] = $request->file('national_card')->store('national_card_file', 'public');
+        }
             
-            Apartment::create($request_data);
+        $apartment = Apartment::create($validated);
 
-            session()->flash('success', __('dashboard.added_successfully'));
-            return redirect()->route('dashboard.admin.apartments.index');
+        foreach ($request->file('images') as $index => $file) {
+            
+            Media::create([
+                'image'        => $file->store('apartment_image', 'public'),
+                'name'         => $file->getClientOriginalName(),
+                'index'        => $index,
+                'apartment_id' => $apartment->id,
+            ]);
 
-        } catch (\Exception $e) {
+        }//end of rach
 
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-
-        }//end try
+        session()->flash('success', __('dashboard.added_successfully'));
+        return redirect()->route('dashboard.admin.apartments.index');
 
     }//end of store
 
 
     public function show(Apartment $apartment)
     {
-        return view('dashboard_admin.apartments.show', compact('apartment'));
+        $regions   = City::where('parent_id', '>', '0')->get();
+        $citys     = City::all();
+        $categorys = Category::all();
+        $owners    = Owner::all();
+
+        return view('dashboard_admin.apartments.show', compact('apartment', 'regions', 'citys', 'categorys', 'owners'));
 
     }//end of show
 
     
     public function edit(Apartment $apartment)
     {
-        return view('dashboard_admin.apartments.edit', compact('apartment'));
+        $regions   = City::where('parent_id', '>', '0')->get();
+        $citys     = City::all();
+        $categorys = Category::all();
+        $owners    = Owner::all();
+
+        return view('dashboard_admin.apartments.edit', compact('apartment', 'regions', 'citys', 'categorys', 'owners'));
 
     }//end of edit 
 
 
-    public function update(Request $request, Apartment $apartment)
+    public function update(ApartmentRequest $request, Apartment $apartment)
     {
-        $request->validate([
-            'title' => ['required','max:255'],
-            'image' => ['required','image'],
-            'city'  => ['required','max:255'],
-            'state' => ['required','max:255'],
-            'dimensions'  => ['required'],
-            'description' => ['required'],
-            'lat' => ['required','numeric'],
-            'lng' => ['required','numeric'],
-            'price' => ['required','numeric'],
-            'avilibalty'   => ['required'],
-            'available_at' => ['required'],
-            'class'        => ['required'],
-        ]);
+        $validated = $request->validated();
+        $validated = $request->safe()->except(['video', 'ownership', 'national_card']);
 
-        try {
+        if ($request->video) {
+            Storage::disk('public')->delete($apartment->video);
+            $validated['video'] = $request->file('video')->store('video_file', 'public');
+        }
 
-            $request_data = $request->except(['image']);
+        if ($request->ownership) {
+            Storage::disk('public')->delete($apartment->ownership);
+            $validated['ownership'] = $request->file('ownership')->store('ownership_file', 'public');
+        }
 
-            if ($request->image) {
-
-                if ($apartment->image != 'apartment_images/default.png') {
-
-                    Storage::disk('local')->delete('public/'. $apartment->image);
-
-                } //end of inner if
-
-                $request_data['image'] = $request->file('image')->store('apartment_images','public');
-
-            } //end of if
+        if ($request->national_card) {
+            Storage::disk('public')->delete($apartment->national_card);
+            $validated['national_card'] = $request->file('national_card')->store('national_card_file', 'public');
+        }
             
-            $apartment->update($request_data);
+        $apartment->update($validated);
 
-            session()->flash('success', __('dashboard.updated_successfully'));
-            return redirect()->route('dashboard.admin.apartments.index');
+        if ($request->images) {
+            
+            foreach ($request->file('images') as $index=>$file) {
+                
+                $media = Media::where([
+                    'apartment_id' => $apartment->id,
+                    'index'        => $index,
+                ])->first();
 
-        } catch (\Exception $e) {
+                Storage::disk('public')->delete($media->image);
+                $media->delete();
 
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+                Media::create([
+                    'image'        => $file->store('apartment_image', 'public'),
+                    'name'         => $file->getClientOriginalName(),
+                    'index'        => $index,
+                    'apartment_id' => $apartment->id,
+                ]);
 
-        }//end try
+            }//end of rach
 
-    }//end of store
+        }//end of if
+
+        session()->flash('success', __('dashboard.updated_successfully'));
+        return redirect()->route('dashboard.admin.apartments.index');
+
+    }//end of update
 
 
     public function destroy(Apartment $apartment)

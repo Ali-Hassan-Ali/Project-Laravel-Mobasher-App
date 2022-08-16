@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\OederResources;
 
 class UserResource extends JsonResource
 {
@@ -20,6 +21,7 @@ class UserResource extends JsonResource
             'phone'      => $this->phone,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'oeders'     => new OederResources($this->oeders),
         ];
     }
 }

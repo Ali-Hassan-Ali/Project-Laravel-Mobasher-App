@@ -22,9 +22,9 @@ class User extends Authenticatable
 
     protected $appends  = ['image_path'];
 
-    public function Rents()
+    public function orders()
     {
-        return $this->hasMany(Rent::class);
+        return $this->hasMany(Order::class);
 
     }//endo frents
 

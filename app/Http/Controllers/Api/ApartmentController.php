@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ApatrmentResources;
+use App\Http\Resources\SliderResources;
 use Illuminate\Http\Request;
 use App\Models\Apartment;
 use App\Models\Category;
@@ -13,10 +15,17 @@ class ApartmentController extends Controller
 
     public function index()
     {
-        $apartments['apartment'] = Apartment::with('images','properties')->where('status', 1)->get();
-        $apartments['category']  = 'fdf';
+        $apartments = Apartment::with('images')->get();
         
-        return response()->api($apartments);
+        return response()->api(new ApatrmentResources($apartments));
+
+    }//end of index
+
+    public function slider()
+    {
+        $apartments = Apartment::with('images')->get()->random(10);;
+        
+        return response()->api(new SliderResources($apartments));
 
     }//end of index
 
@@ -32,7 +41,7 @@ class ApartmentController extends Controller
 
         $apartments['category'] = $category->name;
 
-        return response()->api($apartments);
+        return response()->api(new ApatrmentResources($apartments));
 
     }//end of index
 

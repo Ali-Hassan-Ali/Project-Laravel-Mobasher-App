@@ -26,20 +26,17 @@ Route::get('ping', function() {
 Route::get('/categorys',[CategoryController::class,'index']);
 
 Route::get('/aparments',[ApartmentController::class,'index']);
+Route::get('/aparments_slider',[ApartmentController::class,'slider']);
 Route::get('/aparments/{category}',[ApartmentController::class,'show']);
-
 
 Route::get('/search/{search}',[SearchController::class,'search']);
 Route::post('/search',[SearchController::class,'search']);
 Route::post('/advanced_search',[SearchController::class,'advanced_search']);
 
 Route::post('/order/store',[OrderController::class,'store']);
+Route::get('/order/show/{order}',[OrderController::class,'show']);
 
 Route::post('/apartments/store',[ApartmentController::class,'store']);
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 // user login and register and update
 Route::post('login', [AuthController::class,'login']);

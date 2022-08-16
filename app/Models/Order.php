@@ -12,17 +12,17 @@ class Order extends Model
     protected $guarded = [];
 
     //relation -------------------------------------
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-
-    }//end of user
-
     public function apartment()
     {
         return $this->belongsTo(Apartment::class);
 
-    }//end of apartment
+    }//end of belongsTo apartment
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+
+    }//end of belongsTo user
 
     //scopes -------------------------------------
     public function scopeWhenSearch($query , $search) 

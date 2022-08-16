@@ -16,14 +16,27 @@ class Apartment extends Model
 
     protected $guarded = [];
     protected $hidden  = ['deleted_at'];
-    protected $appends = ['image_path','categorey_name','city','region'];
+    protected $appends = ['categorey_name','city','region','video_path', 'ownership_path', 
+'national_card_path'];
 
     //attributes----------------------------------
-    public function getImagePathAttribute()
+    public function getVideoPathAttribute()
     {
-        return Media::first()->image_path;
+        return asset('storage/'. $this->video);
 
-    }//end of get image path
+    }//end of get video path
+
+    public function getOwnershipPathAttribute()
+    {
+        return asset('storage/'. $this->ownership);
+
+    }//end of get ownership path
+
+    public function getNationalCardPathAttribute()
+    {
+        return asset('storage/'. $this->national_card);
+
+    }//end of get national_card path
 
     public function getCategoreyNameAttribute()
     {

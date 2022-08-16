@@ -23,8 +23,8 @@ class ApartmentSeeder extends Seeder
 
             $OwnerID = Owner::create([
                 'name'       => 'owner name',
-                'phone'      => '12241354',
-                'image_card' => 'image_card/default.png',
+                'first_phone'=> '12241354',
+                'last_phone' => '12241354',
                 'description'=> 'description description description',
             ]);
 
@@ -33,31 +33,48 @@ class ApartmentSeeder extends Seeder
             foreach ($apartments as $key => $apartment) {
 
                 $apartment = Apartment::create([
-                    'title'         => $apartment,
-                    'location_floor'=> 3,
-                    'number_rooms'  => 3,
-                    'price'         => 3,
-                    'description'   => 'description description description',
-                    'category_id'   => 2,
-                    'owner_id'      => $OwnerID,
-                    'city_id'       => 1,
-                    'user_id'       => 1,
-                    'region_id'     => 4,
+                    'corner'              => '1',
+                    'near_the_road'       => '1',
+                    'outstanding_teacher' => '1',
+                    'schools'             => '1',
+                    'markets'             => '1',
+                    'other_services'      => '1',
+                    'category_id'         => '1',
+                    'number_rooms'        => '3',
+                    'floor_rooms'         => '2',
+                    'area_metres'         => '240',
+                    'number_bathrooms'    => '240',
+                    'generator'           => '1',
+                    'balcony'             => '1',
+                    'passenger_kitchen'   => '1',
+                    'elevator'            => '1',
+                    'city_id'             => '1',
+                    'region_id'           => '1',
+                    'number_rental_days'  => '1',
+                    'price_range'         => '1',
+
+                    'full_name'           => 'الاسم رباعي',
+                    'first_phone'         => '0123456789',
+                    'second_phone'        => '0123456789',
+                    'ownership'           => 'ملكية الشقة',
+                    
+                    'user_id'             => '1',
+                    'owner_id'            => $OwnerID->id,
                 ]);
 
-                $properties = ['properties one','properties tow','properties three','properties for'];
+                // $properties = ['properties one','properties tow','properties three','properties for'];
                 
-                foreach ($properties as $key => $propertie) {
+                // foreach ($properties as $key => $propertie) {
 
-                    Propertie::create([
-                        'name'   => $propertie,
-                        'number' => $key,
-                        'apartment_id' => $apartment->id,
-                    ]);
+                //     Propertie::create([
+                //         'name'   => $propertie,
+                //         'number' => $key,
+                //         'apartment_id' => $apartment->id,
+                //     ]);
 
-                }//end of each apartment
+                // }//end of each apartment
 
-                $properties = ['name image one','name image tow','name image three','name image for'];
+                $properties = ['1','2','3','4','5','6','7'];
                 
                 foreach ($properties as $key => $propertie) {
 

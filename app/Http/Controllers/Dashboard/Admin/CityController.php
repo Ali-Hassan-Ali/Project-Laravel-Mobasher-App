@@ -21,7 +21,8 @@ class CityController extends Controller
 
     public function index()
     {
-        $citys = City::WhenSearch(request()->search)->latest()->paginate(10);
+        $citys = City::WhenSearch(request()->search)->whereNull('parent_id')
+                     ->latest()->paginate(10);
 
         return view('dashboard_admin.citys.index', compact('citys'));
 

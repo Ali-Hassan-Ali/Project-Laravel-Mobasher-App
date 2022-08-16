@@ -6,8 +6,8 @@ use App\Http\Controllers\ApartmentController;
 // https://codepen.io/DashboardPack/pen/REmEZQ
 
 
-Route::get('/', function (){
-    
+Route::get('/aaa', function (){
+    return 'gf';
     if (!auth()->guard('admin')->check()) {
             
         return view('dashboard_admin.auth.login');

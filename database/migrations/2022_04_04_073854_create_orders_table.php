@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignIdFor(\App\Models\Apartment::class)->unique();
             $table->foreignIdFor(\App\Models\User::class);
             $table->integer('total_price')->default('0');
-            $table->string('status')->default('waiting');
+            $table->enum('status', ['waiting', 'apeoved', 'unapeoved'])->default('waiting');
             $table->timestamps();
         });
     }

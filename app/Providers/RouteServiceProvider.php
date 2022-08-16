@@ -56,10 +56,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
-
-            Route::prefix('mobile')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/mobile.php'));
         });
     }
 

@@ -57,8 +57,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('dashboard.apartments')</th>
                                     <th>@lang('dashboard.user_name')</th>
+                                    <th>@lang('apartments.full_name')</th>
+                                    <th>@lang('apartments.full_name_owner')</th>
                                     <th>@lang('dashboard.status')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
@@ -69,9 +70,18 @@
                                 @foreach ($orders as $index=>$order)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $order->user->name }}</td>
-                                        <td>{{ $order->apartment->title }}</td>
-                                        <td>{{ $order->status }}</td>
+                                        <td>{{ $order->user->username }}</td>
+                                        <td>
+                                            <a href="{{ route('dashboard.admin.apartments.show', $order->apartment->id) }}">
+                                                {{ $order->apartment->full_name }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('dashboard.admin.apartments.show', $order->apartment->id) }}">
+                                                {{ $order->apartment->owner->name }}
+                                            </a>
+                                        </td>
+                                        <td>@lang('orders.'. $order->status)</td>
                                         <td>{{ $order->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('orders_update'))

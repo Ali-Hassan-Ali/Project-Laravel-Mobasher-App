@@ -26,7 +26,7 @@ class CityTableSeeder extends Seeder
             foreach ($sub_citys as $sub) {
 
                 \App\Models\City::create([
-                    'name'      => $sub,
+                    'name'      => $sub . ' ' . $city->name,
                     'parent_id' => $city->id,
                 ]);
 

@@ -16,9 +16,12 @@ class CreateOwnersTable extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('phone');
-            $table->string('image_card');
+            $table->integer('first_phone')->nullable();
+            $table->integer('last_phone')->nullable();
+            $table->string('image')->default('owner_images/default.png');
             $table->text('description')->nullable();
+
+            $table->foreignIdFor(\App\Models\User::class)->nullable();
             $table->timestamps();
         });
     }

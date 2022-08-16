@@ -9,13 +9,13 @@ class City extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent_id'];
 
     //relation -------------------------------------
 
     public function parent()
     {
-        return $this->hasOne(City::class, 'parent_id');
+        return $this->hasOne(City::class, 'id', 'parent_id');
 
     }//end of fun
 

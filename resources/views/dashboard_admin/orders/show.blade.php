@@ -37,7 +37,7 @@
                         <input type="number" name="user_id" value="{{ $order->user_id }}" hidden>
 
                         @php
-                            $status = ['waiting','accept','cancel'];
+                            $status = ['waiting','apeoved','unapeoved'];
                         @endphp
 
                         <div class="form-group d-none">
@@ -46,7 +46,7 @@
                                 <option value="">@lang('dashboard.select')</option>
                                 @foreach ($status as $status)
                                     <option value="{{ $status }}" {{ $order->status == $status ? 'selected' : '' }}>
-                                        {{ $status }}
+                                        @lang('orders.'. $status)
                                     </option>
                                 @endforeach
                             </select>

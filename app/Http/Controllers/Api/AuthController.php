@@ -8,6 +8,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Order;
 use App\Models\User;
 use App\Models\Favored;
 
@@ -18,12 +19,12 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'username' => ['required'],
-            'phone'    => ['required'],
+            'phone'    => ['required', 'numeric', 'min:8', 'min:12'],
         ]);
 
 
         if ($validator->fails()) {
-            return response()->api([], 1, $validator->errors()->first());
+            return response()->api([], 1, $validator->errors()->first(), 422);
         }
         $request_data = $request->except('image');
         $request_data['password'] = bcrypt('123123123');
@@ -64,6 +65,7 @@ class AuthController extends Controller
     public function user()
     {
         $data['user'] = new UserResource(auth()->user('sanctum'));
+        $data['user']['oeders'] = Order::where('user_id', $data['user']->id)->get();
 
         return response()->api($data);
 
@@ -71,16 +73,14 @@ class AuthController extends Controller
 
     public function update(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
-            'username' => ['required'],
-            'phone'    => ['required'],
-            'user_id'  => ['required'],
+            'username' => ['required', 'min:1', 'min:50'],
+            'phone'    => ['required', 'numeric', 'min:8', 'min:12'],
+            'user_id'  => ['required', 'numeric'],
         ]);
 
-
         if ($validator->fails()) {
-            return response()->api([], 1, $validator->errors()->first());
+            return response()->api([], 1, $validator->errors()->first(), 422);
         }
         
         $data['user'] = new UserResource(auth()->user('sanctum'));

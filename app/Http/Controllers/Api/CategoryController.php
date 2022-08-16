@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\CategoryResources;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -12,7 +13,7 @@ class CategoryController extends Controller
     {
         $categorys = Category::all();
 
-        return response()->api($categorys);
+        return response()->api(new CategoryResources($categorys));
 
     }//end of index
 

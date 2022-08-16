@@ -31,6 +31,12 @@
                 </li>
             @endif
 
+            @if (auth()->guard('admin')->user()->hasPermission('owners_read'))
+                <li class="{{ request()->segment(3) == 'owners' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.admin.owners.index') }}"><i class="fa fa-users"></i><span>@lang('admin.owners')</span></a>
+                </li>
+            @endif
+
             @if (auth()->guard('admin')->user()->hasPermission('categorys_read'))
                 <li class="{{ request()->segment(3) == 'admins' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.admin.categorys.index') }}"><i class="fa fa-list-alt"></i><span>@lang('dashboard.categorys')</span></a>
@@ -52,6 +58,12 @@
             @if (auth()->guard('admin')->user()->hasPermission('citys_read'))
                 <li class="{{ request()->segment(3) == 'citys' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.admin.citys.index') }}"><i class="fa fa-city"></i><span>@lang('dashboard.citys')</span></a>
+                </li>
+            @endif
+
+            @if (auth()->guard('admin')->user()->hasPermission('regions_read'))
+                <li class="{{ request()->segment(3) == 'regions' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.admin.regions.index') }}"><i class="fa fa-city"></i><span>@lang('dashboard.regions')</span></a>
                 </li>
             @endif
 

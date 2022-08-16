@@ -11,7 +11,6 @@ class Media extends Model
 
     protected $guarded  = [];
     protected $appends  = ['image_path'];
-    // protected $hidden   = ['created_at','deleted_at','image'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
