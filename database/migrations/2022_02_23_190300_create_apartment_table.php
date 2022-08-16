@@ -54,6 +54,8 @@ class CreateApartmentTable extends Migration
             $table->string('full_name_owner')->nullable();
             $table->string('national_card')->nullable();
 
+            $table->integer('rating')->default(3);
+
             $table->boolean('status')->default('1');
             $table->integer('views')->default(0);
 
