@@ -35,7 +35,7 @@ class ApartmentController extends Controller
         $category = Category::findOrFail($id);
 
         $apartments['apartmens'] = Apartment::where('category_id', $category->id)
-                                               ->with('images','properties')
+                                               ->with('images')
                                                ->where('status', 1)
                                                ->get();
 
