@@ -12,7 +12,8 @@ use App\Http\Controllers\Dashboard\Admin\CategoryController;
 use App\Http\Controllers\Dashboard\Admin\OwnerController;
 use App\Http\Controllers\Dashboard\Admin\CityController;
 use App\Http\Controllers\Dashboard\Admin\RegionController;
-use App\Http\Controllers\Dashboard\Admin\WelcomController;
+use App\Http\Controllers\Dashboard\Admin\SettingController;
+use App\Http\Controllers\Dashboard\Admin\WelcomeController;
 
 
 Route::get('/dashboard/login', [AuthController::class,'index'])->name('dashboard.login.index');
@@ -21,7 +22,7 @@ Route::post('/dashboard/logout', [AuthController::class,'logout'])->name('dashbo
 
 Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:admin'])->group(function () {
 
-    Route::get('/', [WelcomController::class,'index'])->name('welcome');
+    Route::get('/', [WelcomeController::class,'index'])->name('welcome');
 
     // profile route
     Route::get('profile/edit', [ProfileController::class,'edit'])->name('profile.edit');
@@ -50,6 +51,9 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::resource('citys', CityController::class)->except(['show']);
 
     Route::resource('regions', RegionController::class)->except(['show']);
+
+    Route::get('/settings/social_links', [SettingController::class, 'social_links'])->name('settings.social_links');
+    Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
 
 
 }); //end of dashboard routes

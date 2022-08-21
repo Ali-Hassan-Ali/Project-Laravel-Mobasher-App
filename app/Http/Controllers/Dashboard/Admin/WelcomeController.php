@@ -12,7 +12,7 @@ use App\Models\Apartment;
 use App\Models\Order;
 use App\Models\City;
 
-class WelcomController extends Controller
+class WelcomeController extends Controller
 {
 
     public function __construct()
@@ -35,11 +35,7 @@ class WelcomController extends Controller
             DB::raw('SUM(total_price) as sum')
         )->groupBy('month')->get();
 
-        return view('dashboard_admin.welcome', compact('admins_count',
-                                                       'apartments_count',
-                                                       'orders_count',
-                                                       'citys_count',
-                                                       'sales_data'));
+        return view('dashboard_admin.welcome', compact('admins_count', 'apartments_count', 'orders_count', 'citys_count', 'sales_data'));
 
     }//end of index
 

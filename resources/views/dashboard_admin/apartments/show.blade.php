@@ -245,12 +245,6 @@
                         
                     </div>
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> @lang('dashboard.add')
-                        </button>
-                    </div>
-
                 </div><!-- end of box body -->
 
             </div><!-- end of box -->

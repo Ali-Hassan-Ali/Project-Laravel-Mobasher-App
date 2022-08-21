@@ -39,7 +39,7 @@ return [
     'national_card' => 'بطاقة قومية',
     'full_name' => 'اسم صاحب الشقة رباعي',
     'full_name_owner' => 'الاسم المشرف رباعي',
-    'owner_name' => '',
+    'region' => 'المنطقة',
     '' => '',
 
 ];

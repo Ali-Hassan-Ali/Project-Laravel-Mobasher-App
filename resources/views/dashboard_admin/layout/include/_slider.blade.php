@@ -67,6 +67,12 @@
                 </li>
             @endif
 
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-gear"></i><span class="app-menu__label">Settings</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="{{ route('dashboard.admin.settings.social_links') }}"><i class="icon fa fa-circle-o"></i> Social Links</a></li>
+                </ul>
+            </li>
+
         </ul>
 
     </section>

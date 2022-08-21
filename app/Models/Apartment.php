@@ -14,8 +14,7 @@ class Apartment extends Model
 
     protected $guarded = [];
     protected $hidden  = ['deleted_at'];
-    protected $appends = ['categorey_name','city','region','video_path', 'ownership_path', 
-'national_card_path'];
+    protected $appends = ['category_name','city','region','video_path', 'ownership_path', 'national_card_path'];
 
     //attributes----------------------------------
     public function getVideoPathAttribute()
@@ -36,7 +35,7 @@ class Apartment extends Model
 
     }//end of get national_card path
 
-    public function getCategoreyNameAttribute()
+    public function getCategoryNameAttribute()
     {
         return Category::findOrFail($this->category_id)->name;
 
@@ -73,7 +72,12 @@ class Apartment extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
+    }//end of belongsTo city
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }//end of belongsTo city
 
     public function properties()
     {
