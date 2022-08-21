@@ -14,12 +14,18 @@ class Apartment extends Model
 
     protected $guarded = [];
     protected $hidden  = ['deleted_at'];
-    protected $appends = ['category_name','city','region','video_path', 'ownership_path', 'national_card_path'];
+    protected $appends = ['category_name','city','region','video_path', 'ownership_path', 'national_card_path','phone_master'];
 
     //attributes----------------------------------
     public function getVideoPathAttribute()
     {
         return asset('storage/'. $this->video);
+
+    }//end of get video path
+
+    public function getPhoneMasterAttribute()
+    {
+        return setting('phone_master');
 
     }//end of get video path
 
@@ -78,11 +84,6 @@ class Apartment extends Model
     {
         return $this->belongsTo(City::class);
     }//end of belongsTo city
-
-    public function properties()
-    {
-        return $this->hasMany(Propertie::class);
-    }
 
     //scopes -------------------------------------
     public function scopeWhenSearch($query , $search) 
