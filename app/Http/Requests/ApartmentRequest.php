@@ -48,7 +48,10 @@ class ApartmentRequest extends FormRequest
             'full_name'          => ['required','min:2','max:255'],
             'first_phone'        => ['required','numeric'],
             'second_phone'       => ['required','numeric'],
-            'owner_id'           => ['required','numeric'],
+            // 'owner_id'           => ['required','numeric'],
+            'contract_terms'     => ['nullable','string'],
+            'owner_phone'        => ['required','numeric'],
+            'owner_name'         => ['required','string'],
         ];
 
         if (in_array($this->method(), ['post', 'POST'])) {

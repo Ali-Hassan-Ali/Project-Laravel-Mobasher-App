@@ -49,7 +49,6 @@ class ApartmentController extends Controller
     public function store(ApartmentRequest $request)
     {
 
-        $validated = $request->validated();
         $validated = $request->safe()->except(['video', 'ownership', 'national_card']);
         if ($request->video) {
             $validated['video'] = $request->file('video')->store('video_file', 'public');
@@ -131,14 +130,6 @@ class ApartmentController extends Controller
         if ($request->images) {
             
             foreach ($request->file('images') as $index=>$file) {
-                
-                $media = Media::where([
-                    'apartment_id' => $apartment->id,
-                    'index'        => $index,
-                ])->first();
-
-                Storage::disk('public')->delete($media->image);
-                $media->delete();
 
                 Media::create([
                     'image'        => $file->store('apartment_image', 'public'),

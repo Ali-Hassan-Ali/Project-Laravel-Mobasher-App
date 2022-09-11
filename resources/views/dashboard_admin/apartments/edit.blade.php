@@ -146,20 +146,13 @@
 
                         </div>
                         <br>
-                        @php
-                            $images = ['0','1','2','3','4','5','6'];
-                        @endphp
 
                         <div class="row">
                             
-                            @foreach ($images as $index=>$element)
-
-                                <div class="form-group col-md-6">
-                                    <label>@lang('apartments.image')</label>
-                                    <input type="file" accept="image/*" name="images[{{ $index }}]" class="form-control" value="{{ old('number_rooms') }}">
-                                </div>
-                                
-                            @endforeach
+                            <div class="form-group col-md-6">
+                                <label>@lang('apartments.image')</label>
+                                <input type="file" accept="image/*" name="images[]" class="form-control">
+                            </div>
 
                             <div class="form-group col-md-6">
                                 <label>@lang('apartments.video')</label>
@@ -230,14 +223,18 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label>@lang('apartments.full_name_owner')</label>
-                                <select class="form-control" required name="owner_id">
-                                    <option value="">@lang('dashboard.select')</option>
-                                    @foreach ($owners as $owner)
-                                        <option value="{{ $owner->id }}"
-                                            {{ old('owner_id', $apartment->owner_id) == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
-                                    @endforeach
-                                </select>
+                                <label>@lang('apartments.contract_terms')</label>
+                                <textarea class="form-control" name="contract_terms" rows="6">{{ old('contract_terms', $apartment->contract_terms) }}</textarea>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>@lang('apartments.owner_name')</label>
+                                <input type="test" name="owner_name" class="form-control" value="{{ old('owner_name', $apartment->owner_name) }}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>@lang('apartments.owner_phone')</label>
+                                <input type="number" name="owner_phone" class="form-control" value="{{ old('owner_phone', $apartment->owner_phone) }}">
                             </div>
 
                             <div class="form-group col-md-6">
