@@ -179,7 +179,7 @@
 
                             <div class="form-group col-md-6">
                                 <label>@lang('dashboard.regions')</label>
-                                <select class="form-control" required name="regions">
+                                <select class="form-control" required name="region_id">
                                     <option value="">@lang('dashboard.select')</option>
                                     @foreach ($regions as $region)
                                         <option value="{{ $region->id }}"

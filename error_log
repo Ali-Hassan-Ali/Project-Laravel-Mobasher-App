@@ -3,3 +3,21 @@
 Stack trace:
 #0 {main}
   thrown in /home/infotouc/public_html/artisan on line 18
+[21-Aug-2022 11:14:16 UTC] PHP Warning:  require(/home/infotouc/public_html/vendor/composer/../symfony/var-dumper/Resources/functions/dump.php): Failed to open stream: No such file or directory in /home/infotouc/public_html/vendor/composer/autoload_real.php on line 78
+[21-Aug-2022 11:14:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/infotouc/public_html/vendor/composer/../symfony/var-dumper/Resources/functions/dump.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/infotouc/public_html/vendor/composer/autoload_real.php:78
+Stack trace:
+#0 /home/infotouc/public_html/vendor/composer/autoload_real.php(61): composerRequireca81ba90fdac8ae4bd3fee051f41a2ce()
+#1 /home/infotouc/public_html/vendor/autoload.php(7): ComposerAutoloaderInitca81ba90fdac8ae4bd3fee051f41a2ce::getLoader()
+#2 /home/infotouc/public_html/public/index.php(34): require('/home/infotouc/...')
+#3 /home/infotouc/public_html/server.php(21): require_once('/home/infotouc/...')
+#4 {main}
+  thrown in /home/infotouc/public_html/vendor/composer/autoload_real.php on line 78
+[21-Aug-2022 11:14:25 UTC] PHP Warning:  require(/home/infotouc/public_html/vendor/composer/../symfony/translation/Resources/functions.php): Failed to open stream: No such file or directory in /home/infotouc/public_html/vendor/composer/autoload_real.php on line 78
+[21-Aug-2022 11:14:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/infotouc/public_html/vendor/composer/../symfony/translation/Resources/functions.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/infotouc/public_html/vendor/composer/autoload_real.php:78
+Stack trace:
+#0 /home/infotouc/public_html/vendor/composer/autoload_real.php(61): composerRequireca81ba90fdac8ae4bd3fee051f41a2ce()
+#1 /home/infotouc/public_html/vendor/autoload.php(7): ComposerAutoloaderInitca81ba90fdac8ae4bd3fee051f41a2ce::getLoader()
+#2 /home/infotouc/public_html/public/index.php(34): require('/home/infotouc/...')
+#3 /home/infotouc/public_html/server.php(21): require_once('/home/infotouc/...')
+#4 {main}
+  thrown in /home/infotouc/public_html/vendor/composer/autoload_real.php on line 78

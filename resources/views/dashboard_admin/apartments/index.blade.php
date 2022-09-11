@@ -70,8 +70,8 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $apartment->category->name }}</td>
-                                        <td>{{ $apartment->city }}</td>
-                                        <td>{{ $apartment->region }}</td>
+                                        <td>{{ $apartment->city ?? '' }}</td>
+                                       
                                         <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('apartments_update'))

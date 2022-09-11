@@ -49,13 +49,13 @@ class Apartment extends Model
 
     public function getCityAttribute()
     {
-        return City::findOrFail($this->city_id)->name;
+        return City::findOrFail($this->city_id)->name ?? '';
 
     }//end of get image path
 
     public function getRegionAttribute()
     {
-        return City::findOrFail($this->region_id)->name;
+        return City::findOrFail($this->region_id)->name ?? '';
 
     }//end of get image path
 
