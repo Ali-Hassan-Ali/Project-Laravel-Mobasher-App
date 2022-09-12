@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\Owner\WelcomController;
 
-// https://codepen.io/DashboardPack/pen/REmEZQ
-
 
 Route::get('/', function (){
     

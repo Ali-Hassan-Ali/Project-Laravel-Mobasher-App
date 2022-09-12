@@ -32,7 +32,7 @@
     		
 	        <div class="row">
 
-	        	<h1 class="text-center">تم الاضافة بنجاح</h1>
+	        	<h1 class="text-center test-success">تم الاضافة بنجاح</h1>
 
 	            <div class="form-group mt-4">
                     <a href="{{ route('owner.apartments.index') }}" type="submit" class="btn btn-success col-12">
