@@ -91,7 +91,7 @@ class Apartment extends Model
 
     }//end of belongsTo city
 
-    public function region()
+    public function regione()
     {
         return $this->belongsTo(City::class, 'region_id');
 
