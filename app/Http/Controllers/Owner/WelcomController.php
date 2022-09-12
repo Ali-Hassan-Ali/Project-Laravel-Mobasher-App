@@ -16,8 +16,8 @@ class WelcomController extends Controller
     
     public function index()
     {
-    	$regions   = City::where('parent_id', '>', '0')->get();
-        $citys     = City::all();
+    	$regions   = City::where('parent_id', '>', '1')->get();
+        $citys     = City::where('parent_id', '0')->get();
         $categorys = Category::all();
         $owners    = Owner::all();
 
