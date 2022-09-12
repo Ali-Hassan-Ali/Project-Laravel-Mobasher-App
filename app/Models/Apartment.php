@@ -85,9 +85,16 @@ class Apartment extends Model
         return $this->belongsTo(Category::class);
     }//end of belongsTo city
 
-    public function city()
+    public function citiy()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class, 'city_id');
+
+    }//end of belongsTo city
+
+    public function region()
+    {
+        return $this->belongsTo(City::class, 'region_id');
+
     }//end of belongsTo city
 
     //scopes -------------------------------------

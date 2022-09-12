@@ -150,25 +150,20 @@ class ApartmentController extends Controller
 
     public function destroy(Apartment $apartment)
     {
-        try {
+        
 
-            if ($apartment->image != 'apartment_images/default.png') {
+            // if ($apartment->image != 'apartment_images/default.png') {
 
-                Storage::disk('local')->delete('public/'. $admin->image);
+            //     Storage::disk('local')->delete('public/'. $admin->image);
 
-            } //end of inner if
+            // } //end of inner if
 
             $apartment->delete();
 
             session()->flash('success', __('dashboard.deleted_successfully'));
             return redirect()->route('dashboard.admin.apartments.index');
 
-        } catch (\Exception $e) {
-
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-
-        }//end try
-
+        
     }//endof destroy
 
     public function status(Apartment $apartment)

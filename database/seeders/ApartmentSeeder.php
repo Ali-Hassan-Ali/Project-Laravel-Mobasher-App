@@ -49,14 +49,16 @@ class ApartmentSeeder extends Seeder
                     'passenger_kitchen'   => '1',
                     'elevator'            => '1',
                     'city_id'             => '1',
-                    'region_id'           => '1',
+                    'region_id'           => '5',
                     'number_rental_days'  => '1',
                     'price_range'         => '1',
-
+                    
                     'full_name'           => 'الاسم رباعي',
                     'first_phone'         => '0123456789',
                     'second_phone'        => '0123456789',
                     'ownership'           => 'ملكية الشقة',
+                    'owner_name'          => 'اسم المشرف',
+                    'owner_phone'         => 12314354524524,
                     
                     'user_id'             => '1',
                     'owner_id'            => $OwnerID->id,

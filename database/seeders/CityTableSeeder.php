@@ -21,16 +21,39 @@ class CityTableSeeder extends Seeder
                 'name' => $city,
             ]);
 
-            $sub_citys = ['واحد','اتنين','ثلاثه'];
 
-            foreach ($sub_citys as $sub) {
+        }//end of each
 
-                \App\Models\City::create([
-                    'name'      => $sub . ' ' . $city->name,
-                    'parent_id' => $city->id,
-                ]);
+        $sub_citys = ['اركويت','الصحافة','جبرة'];
 
-            }//end of each
+        foreach ($sub_citys as $sub) {
+
+            \App\Models\City::create([
+                'name'      => $sub,
+                'parent_id' => 1,
+            ]);
+
+        }//end of each
+
+        $sub_citys = ['الشهداء','المهندسين','المربعات'];
+
+        foreach ($sub_citys as $sub) {
+
+            \App\Models\City::create([
+                'name'      => $sub,
+                'parent_id' => 2,
+            ]);
+
+        }//end of each
+
+        $sub_citys = ['الوسطي'];
+
+        foreach ($sub_citys as $sub) {
+
+            \App\Models\City::create([
+                'name'      => $sub,
+                'parent_id' => 3,
+            ]);
 
         }//end of each
 

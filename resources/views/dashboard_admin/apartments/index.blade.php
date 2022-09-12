@@ -60,6 +60,11 @@
                                     <th>@lang('dashboard.categorys')</th>
                                     <th>@lang('dashboard.city')</th>
                                     <th>@lang('apartments.region')</th>
+                                    <th>@lang('apartments.full_name')</th>
+                                    <th>@lang('apartments.first_phone')</th>
+                                    <th>@lang('apartments.second_phone')</th>
+                                    <th>@lang('apartments.owner_name')</th>
+                                    <th>@lang('apartments.owner_phone')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
@@ -67,11 +72,17 @@
                                 
                                 <tbody>
                                 @foreach ($apartments as $index=>$apartment)
+                                {{-- @dd($apartment); --}}
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $apartment->category->name }}</td>
-                                        <td>{{ $apartment->city ?? '' }}</td>
-                                       
+                                        <td>{{ $apartment->citiy->name  }}</td>
+                                        <td>{{ $apartment->region->name ?? ''  }}</td>
+                                        <td>{{ $apartment->full_name ?? '' }}</td>
+                                        <td>{{ $apartment->second_phone ?? '' }}</td>
+                                        <td>{{ $apartment->second_phone ?? '' }}</td>
+                                        <td>{{ $apartment->owner_name ?? '' }}</td>
+                                        <td>{{ $apartment->owner_phone ?? '' }}</td>
                                         <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('apartments_update'))
