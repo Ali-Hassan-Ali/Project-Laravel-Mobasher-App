@@ -76,7 +76,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $apartment->category->name }}</td>
-                                        <td>{{ $apartment->citiy->name  }}</td>
+                                        <td>{{ isset($apartment->citiy->name) ? $apartment->citiy->name : '' }}</td>
                                         <td>{{ $apartment->region_name ?? ''  }}</td>
                                         <td>{{ $apartment->full_name ?? '' }}</td>
                                         <td>{{ $apartment->second_phone ?? '' }}</td>
