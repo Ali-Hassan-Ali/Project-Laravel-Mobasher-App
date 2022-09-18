@@ -173,13 +173,7 @@
 
                         <div class="form-group col-md-6">
                             <label>@lang('dashboard.regions')</label>
-                            <select class="form-control" required name="region_id">
-                                <option value="">@lang('dashboard.select')</option>
-                                @foreach ($regions as $region)
-                                    <option value="{{ $region->id }}"
-                                        {{ old('region_id') == $region->id ? 'selected' : '' }}>{{ $region->name }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="region_name" class="form-control" value="{{ old('region_name') }}">
                         </div>
 
                         <div class="form-group col-md-6">
@@ -229,16 +223,6 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label>@lang('apartments.owner_name')</label>
-                            <input type="test" name="owner_name" class="form-control" value="{{ old('owner_name') }}">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label>@lang('apartments.owner_phone')</label>
-                            <input type="number" name="owner_phone" class="form-control" value="{{ old('owner_phone') }}">
-                        </div>
-
-                        <div class="form-group col-md-6">
                             <label>@lang('apartments.national_card')</label>
                             <input type="file" name="national_card" class="form-control" value="{{ old('national_card') }}">
                         </div>
@@ -248,6 +232,22 @@
                             <input type="file" name="ownership" class="form-control" value="{{ old('ownership') }}">
                         </div>
                         
+                    </div>
+
+                    <h3>@lang('apartments.admin_information')</h3>
+
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label>@lang('apartments.owner_name')</label>
+                            <input type="test" name="owner_name" class="form-control" value="{{ old('owner_name') }}">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>@lang('apartments.owner_phone')</label>
+                            <input type="number" name="owner_phone" class="form-control" value="{{ old('owner_phone') }}">
+                        </div>
+
                     </div>
 
                     <div class="form-group mt-4">

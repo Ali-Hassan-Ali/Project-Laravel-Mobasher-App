@@ -24,38 +24,38 @@ class CityTableSeeder extends Seeder
 
         }//end of each
 
-        $sub_citys = ['اركويت','الصحافة','جبرة'];
+        // $sub_citys = ['اركويت','الصحافة','جبرة'];
 
-        foreach ($sub_citys as $sub) {
+        // foreach ($sub_citys as $sub) {
 
-            \App\Models\City::create([
-                'name'      => $sub,
-                'parent_id' => 1,
-            ]);
+        //     \App\Models\City::create([
+        //         'name'      => $sub,
+        //         'parent_id' => 1,
+        //     ]);
 
-        }//end of each
+        // }//end of each
 
-        $sub_citys = ['الشهداء','المهندسين','المربعات'];
+        // $sub_citys = ['الشهداء','المهندسين','المربعات'];
 
-        foreach ($sub_citys as $sub) {
+        // foreach ($sub_citys as $sub) {
 
-            \App\Models\City::create([
-                'name'      => $sub,
-                'parent_id' => 2,
-            ]);
+        //     \App\Models\City::create([
+        //         'name'      => $sub,
+        //         'parent_id' => 2,
+        //     ]);
 
-        }//end of each
+        // }//end of each
 
-        $sub_citys = ['الوسطي'];
+        // $sub_citys = ['الوسطي'];
 
-        foreach ($sub_citys as $sub) {
+        // foreach ($sub_citys as $sub) {
 
-            \App\Models\City::create([
-                'name'      => $sub,
-                'parent_id' => 3,
-            ]);
+        //     \App\Models\City::create([
+        //         'name'      => $sub,
+        //         'parent_id' => 3,
+        //     ]);
 
-        }//end of each
+        // }//end of each
 
     }//end of run
     

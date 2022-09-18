@@ -15,7 +15,7 @@ Route::get('/', function (){
 
     return redirect()->route('dashboard.admin.welcome');
 
-});
+});//end of
 
 Route::get('form-owner', [WelcomController::class, 'index'])->name('owner.apartments.index');
 

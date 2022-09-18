@@ -13,13 +13,12 @@ class CategorysTableSeeder extends Seeder
      */
     public function run()
     {
-        $categorys = ['شقق مفروشة','عقارات','مزارع'];
+        $categorys = ['شقق فندقية   ','شقق عادية    ','شقق مفروشة   '];
 
         foreach ($categorys as $category) {
             
             \App\Models\Category::create([
                 'name'  => $category,
-                'image' => 'categorys_images/default.png',
             ]);
 
         }//end of each

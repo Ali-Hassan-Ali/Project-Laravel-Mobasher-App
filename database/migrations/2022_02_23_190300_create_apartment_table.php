@@ -43,6 +43,7 @@ class CreateApartmentTable extends Migration
             $table->string('video')->default('apartment_video/default.mp4');
             $table->string('city_id')->nullable();
             $table->string('region_id')->nullable();
+            $table->string('region_name')->nullable();
             $table->string('number_rental_days')->nullable();
             $table->integer('price_range')->nullable();
 

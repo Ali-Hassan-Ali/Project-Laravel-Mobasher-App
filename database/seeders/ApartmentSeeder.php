@@ -50,6 +50,7 @@ class ApartmentSeeder extends Seeder
                     'elevator'            => '1',
                     'city_id'             => '1',
                     'region_id'           => '5',
+                    'region_name'         => 'المنطقة',
                     'number_rental_days'  => '1',
                     'price_range'         => '1',
                     
@@ -111,6 +112,7 @@ class ApartmentSeeder extends Seeder
                     'elevator'            => '1',
                     'city_id'             => '1',
                     'region_id'           => '1',
+                    'region_name'         => 'المنطقة',
                     'number_rental_days'  => '1',
                     'price_range'         => '1',
 
@@ -170,6 +172,7 @@ class ApartmentSeeder extends Seeder
                     'elevator'            => '1',
                     'city_id'             => '1',
                     'region_id'           => '1',
+                    'region_name'         => 'المنطقة',
                     'number_rental_days'  => '1',
                     'price_range'         => '1',
 

@@ -16,7 +16,7 @@ return [
     'apartment_type' => 'نوع الشقة',
     'number_rooms' => 'عدد الغرف',
     'floor_rooms' => 'رقم الطابق',
-    'area_metres' => 'المساحة بلمت',
+    'area_metres' => 'المساحة ',
     'number_bathrooms' => 'عدد الحمامات',
 
     'generator' => 'مولد',
@@ -31,7 +31,7 @@ return [
     'number_rental_days' => 'عدد ايام الايجار',
     'price_range' => 'مدي السعر',
     
-    'owner_information' => 'معلومات صاحب الشقة',
+    'owner_information' => 'معلومات المالك',
     'quadrant_name' => 'الاسم رباعي',
     'first_phone' => 'رقم التلفون الاول',
     'second_phone' => 'رقم التلفون الثاني',
@@ -40,8 +40,10 @@ return [
     'full_name' => 'اسم صاحب الشقة رباعي',
     'full_name_owner' => 'الاسم المشرف رباعي',
     'region' => 'المنطقة',
-    'contract_terms' => 'شروط التعاقد الخاصه بلمالك',
+    'contract_terms' => 'شروط التعاقد الخاصه بالمالك',
     'owner_name' => 'اسم المشرف الرباعي',
     'owner_phone' => 'رقم هاتف المشرف',
+    
+    'admin_information' => 'معلومات المشرف',
 
 ];

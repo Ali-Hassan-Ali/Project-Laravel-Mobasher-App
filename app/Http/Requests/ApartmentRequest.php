@@ -42,7 +42,7 @@ class ApartmentRequest extends FormRequest
             'elevator'           => ['nullable'],
             'video'              => ['nullable','file'],
             'city_id'            => ['required','numeric'],
-            'region_id'          => ['required','numeric'],
+            'region_id'          => ['nullable','numeric'],
             'number_rental_days' => ['required','numeric'],
             'price_range'        => ['required','numeric'],
             'full_name'          => ['required','min:2','max:255'],
@@ -52,6 +52,7 @@ class ApartmentRequest extends FormRequest
             'contract_terms'     => ['nullable','string'],
             'owner_phone'        => ['required','numeric'],
             'owner_name'         => ['required','string'],
+            'region_name'        => ['required','string'],
         ];
 
         if (in_array($this->method(), ['post', 'POST'])) {
