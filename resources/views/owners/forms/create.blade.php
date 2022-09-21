@@ -178,7 +178,7 @@
 
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.price_range')</label>
-                            <input type="number" name="price_range" class="form-control" value="{{ old('price_range') }}">
+                            <input type="number" name="price_range" class="form-control" required value="{{ old('price_range') }}">
                         </div>
 
                         @php

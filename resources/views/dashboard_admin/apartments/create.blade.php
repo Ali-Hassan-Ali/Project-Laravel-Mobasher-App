@@ -171,12 +171,12 @@
 
                             <div class="form-group col-md-6">
                                 <label>@lang('dashboard.regions')</label>
-                                <input type="text" name="region_name" class="form-control" value="{{ old('region_name') }}">
+                                <input type="text" name="region_name" class="form-control" value="{{ old('region_name') }}" required>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>@lang('apartments.price_range')</label>
-                                <input type="number" name="price_range" class="form-control" value="{{ old('price_range') }}">
+                                <input type="number" name="price_range" class="form-control" value="{{ old('price_range') }}" required>
                             </div>
 
                             <div class="form-group col-md-6">
