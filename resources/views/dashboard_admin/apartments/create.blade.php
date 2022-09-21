@@ -179,18 +179,10 @@
                                 <input type="number" name="price_range" class="form-control" value="{{ old('price_range') }}">
                             </div>
 
-                            @php
-                                $RentalDays = ['1', '30'];
-                            @endphp
-
                             <div class="form-group col-md-6">
                                 
                                 <label>@lang('apartments.number_rental_days')</label>
                                 <input type="number" name="number_rental_days" class="form-control" value="{{ old('number_rental_days') }}" required>
-                                @foreach ($RentalDays as $day)
-                                    <option value="{{ $day }}"
-                                        {{ old('number_rental_days') == $day ? 'selected' : '' }}>{{ $day }}</option>
-                                @endforeach
                             </div>
                             
                         </div>
