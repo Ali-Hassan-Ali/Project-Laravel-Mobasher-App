@@ -184,14 +184,13 @@
                             @endphp
 
                             <div class="form-group col-md-6">
+                                
                                 <label>@lang('apartments.number_rental_days')</label>
-                                <select class="form-control" required name="number_rental_days">
-                                    <option value="">@lang('dashboard.select')</option>
-                                    @foreach ($RentalDays as $day)
-                                        <option value="{{ $day }}"
-                                            {{ old('number_rental_days') == $day ? 'selected' : '' }}>{{ $day }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" name="number_rental_days" class="form-control" value="{{ old('number_rental_days') }}" required>
+                                @foreach ($RentalDays as $day)
+                                    <option value="{{ $day }}"
+                                        {{ old('number_rental_days') == $day ? 'selected' : '' }}>{{ $day }}</option>
+                                @endforeach
                             </div>
                             
                         </div>
