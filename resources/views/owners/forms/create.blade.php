@@ -223,7 +223,7 @@
 
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.ownership')</label>
-                            <input type="file" name="ownership" class="form-control" value="{{ old('ownership') }}">
+                            <input type="text" name="ownership" class="form-control" value="{{ old('ownership') }}">
                         </div>
                         
                     </div>

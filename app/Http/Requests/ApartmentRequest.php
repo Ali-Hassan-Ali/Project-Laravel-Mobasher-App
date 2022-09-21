@@ -53,12 +53,13 @@ class ApartmentRequest extends FormRequest
             'owner_phone'        => ['required','numeric'],
             'owner_name'         => ['required','string'],
             'region_name'        => ['required','string'],
+            'ownership'          => ['nullable','string','min:2','max:255'],
         ];
 
         if (in_array($this->method(), ['post', 'POST'])) {
         
             $rules['national_card'] = ['required','file'];
-            $rules['ownership']     = ['required','file'];
+            // $rules['ownership']     = ['required','file'];
 
         }
 

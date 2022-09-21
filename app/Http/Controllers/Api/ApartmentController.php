@@ -15,7 +15,7 @@ class ApartmentController extends Controller
 
     public function index()
     {
-        $apartments = Apartment::with('images')->get();
+        $apartments = Apartment::where('status', 1)->with('images')->get();
         
         return response()->api(new ApatrmentResources($apartments));
 
@@ -23,7 +23,7 @@ class ApartmentController extends Controller
 
     public function slider()
     {
-        $apartments = Apartment::with('images')->get()->random(10);;
+        $apartments = Apartment::where('status', 1)->with('images')->get()->random(10);;
         
         return response()->api(new SliderResources($apartments));
 

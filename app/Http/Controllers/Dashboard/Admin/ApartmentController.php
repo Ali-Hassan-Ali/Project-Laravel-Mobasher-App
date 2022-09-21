@@ -49,13 +49,9 @@ class ApartmentController extends Controller
     public function store(ApartmentRequest $request)
     {
 
-        $validated = $request->safe()->except(['video', 'ownership', 'national_card']);
+        $validated = $request->safe()->except(['video', 'national_card']);
         if ($request->video) {
             $validated['video'] = $request->file('video')->store('video_file', 'public');
-        }
-
-        if ($request->ownership) {
-            $validated['ownership'] = $request->file('ownership')->store('ownership_file', 'public');
         }
 
         if ($request->national_card) {
@@ -108,16 +104,11 @@ class ApartmentController extends Controller
     public function update(ApartmentRequest $request, Apartment $apartment)
     {
         $validated = $request->validated();
-        $validated = $request->safe()->except(['video', 'ownership', 'national_card']);
+        $validated = $request->safe()->except(['video', 'national_card']);
 
         if ($request->video) {
             Storage::disk('public')->delete($apartment->video);
             $validated['video'] = $request->file('video')->store('video_file', 'public');
-        }
-
-        if ($request->ownership) {
-            Storage::disk('public')->delete($apartment->ownership);
-            $validated['ownership'] = $request->file('ownership')->store('ownership_file', 'public');
         }
 
         if ($request->national_card) {
