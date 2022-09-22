@@ -25,7 +25,7 @@ class ApartmentRequest extends FormRequest
     {
         
         $rules = [
-            'corner'             => ['required'],
+            'corner'             => ['nullable'],
             'near_the_road'      => ['nullable'],
             'outstanding_teacher'=> ['nullable'],
             'schools'            => ['nullable'],
@@ -47,7 +47,7 @@ class ApartmentRequest extends FormRequest
             'price_range'        => ['required','numeric'],
             'full_name'          => ['required','min:2','max:255'],
             'first_phone'        => ['required','numeric'],
-            'second_phone'       => ['required','numeric'],
+            'second_phone'       => ['nullable','numeric'],
             // 'owner_id'           => ['required','numeric'],
             'contract_terms'     => ['nullable','string'],
             'owner_phone'        => ['required','numeric'],

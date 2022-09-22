@@ -103,19 +103,19 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.number_rooms')</label>
-                            <input type="number" name="number_rooms" class="form-control" value="{{ old('number_rooms') }}">
+                            <input type="number" name="number_rooms" class="form-control" value="{{ old('number_rooms', 1) }}" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.floor_rooms')</label>
-                            <input type="number" name="floor_rooms" class="form-control" value="{{ old('floor_rooms') }}">
+                            <input type="number" name="floor_rooms" class="form-control" value="{{ old('floor_rooms'0) }}" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.area_metres')</label>
-                            <input type="number" name="area_metres" class="form-control" value="{{ old('area_metres') }}">
+                            <input type="number" name="area_metres" class="form-control" value="{{ old('area_metres',1) }}" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.number_bathrooms')</label>
-                            <input type="number" name="number_bathrooms" class="form-control" value="{{ old('number_bathrooms') }}">
+                            <input type="number" name="number_bathrooms" class="form-control" value="{{ old('number_bathrooms',1) }}" required>
                         </div>
                     </div>
 
@@ -234,12 +234,12 @@
 
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.owner_name')</label>
-                            <input type="test" name="owner_name" class="form-control" value="{{ old('owner_name') }}">
+                            <input type="test" name="owner_name" class="form-control" value="{{ old('owner_name') }}" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.owner_phone')</label>
-                            <input type="number" name="owner_phone" class="form-control" value="{{ old('owner_phone') }}">
+                            <input type="number" name="owner_phone" class="form-control" value="{{ old('owner_phone') }}" required>
                         </div>
 
                     </div>
