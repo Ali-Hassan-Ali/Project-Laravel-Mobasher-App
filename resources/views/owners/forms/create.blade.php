@@ -107,7 +107,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.floor_rooms')</label>
-                            <input type="number" name="floor_rooms" class="form-control" value="{{ old('floor_rooms'0) }}" required>
+                            <input type="number" name="floor_rooms" class="form-control" value="{{ old('floor_rooms', 0) }}" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>@lang('apartments.area_metres')</label>
