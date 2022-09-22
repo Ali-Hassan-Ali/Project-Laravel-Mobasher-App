@@ -228,6 +228,22 @@
                             </div>
 
                             <div class="form-group col-md-6">
+                                <label>@lang('apartments.national_card')</label>
+                                <input type="file" name="national_card" class="form-control" value="{{ old('national_card', $apartment->national_card) }}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>@lang('apartments.ownership')</label>
+                                <input type="text" name="ownership" class="form-control" value="{{ old('ownership', $apartment->ownership) }}">
+                            </div>
+                            
+                        </div>
+
+                        <h3>@lang('apartments.admin_information')</h3>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
                                 <label>@lang('apartments.owner_name')</label>
                                 <input type="test" name="owner_name" class="form-control" value="{{ old('owner_name', $apartment->owner_name) }}">
                             </div>
@@ -237,16 +253,6 @@
                                 <input type="number" name="owner_phone" class="form-control" value="{{ old('owner_phone', $apartment->owner_phone) }}">
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label>@lang('apartments.national_card')</label>
-                                <input type="file" name="national_card" class="form-control" value="{{ old('national_card', $apartment->national_card) }}">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label>@lang('apartments.ownership')</label>
-                                <input type="file" name="ownership" class="form-control" value="{{ old('ownership', $apartment->ownership) }}">
-                            </div>
-                            
                         </div>
 
                         <div class="form-group">
