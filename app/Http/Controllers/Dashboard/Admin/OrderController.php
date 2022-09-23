@@ -23,7 +23,6 @@ class OrderController extends Controller
 
     public function index()
     {
-        dd('gfg');
 
         $orders = Order::WhenSearch(request()->search)
                         ->with('user','apartment')
