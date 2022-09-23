@@ -86,7 +86,18 @@
                         <h3>@lang('apartments.inner_shape')</h3>
                         </br>
 
-                        <div class="form-group col-md-6">
+                        <div class="col-6">
+                            <label>@lang('dashboard.apartments')</label>
+                            <select class="form-control" required name="category_id">
+                                <option value="">@lang('dashboard.select')</option>
+                                @foreach ($categorys as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category_id', $apartment->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-6">
                             <label>@lang('dashboard.citys')</label>
                             <select class="form-control" required name="city_id">
                                 <option value="">@lang('dashboard.select')</option>
@@ -99,16 +110,6 @@
                             </select>
                         </div>
 
-                        <div class="col-6">
-                            <label>@lang('dashboard.apartments')</label>
-                            <select class="form-control" required name="category_id">
-                                <option value="">@lang('dashboard.select')</option>
-                                @foreach ($categorys as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category_id', $apartment->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         </br>
                         
 
@@ -199,19 +200,9 @@
                                 <input type="number" name="price_range" class="form-control" value="{{ old('price_range', $apartment->price_range) }}">
                             </div>
 
-                            @php
-                                $RentalDays = ['1', '30'];
-                            @endphp
-
                             <div class="form-group col-md-6">
                                 <label>@lang('apartments.number_rental_days')</label>
-                                <select class="form-control" required name="number_rental_days">
-                                    <option value="">@lang('dashboard.select')</option>
-                                    @foreach ($RentalDays as $day)
-                                        <option value="{{ $day }}"
-                                            {{ old('number_rental_days', $apartment->number_rental_days) == $day ? 'selected' : '' }}>{{ $day }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" name="number_rental_days" class="form-control" value="{{ old('number_rental_days', $apartment->number_rental_days) }}">
                             </div>
                             
                         </div>
