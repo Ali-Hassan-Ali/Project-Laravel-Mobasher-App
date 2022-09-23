@@ -13,7 +13,7 @@
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.admin.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
                 <li><a href="{{ route('dashboard.admin.apartments.index') }}"> @lang('dashboard.apartments')</a></li>
-                <li class="active">@lang('dashboard.add')</li>
+                <li class="active">@lang('dashboard.edit')</li>
             </ol>
 
         </section>
