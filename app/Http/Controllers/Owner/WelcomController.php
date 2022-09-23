@@ -36,6 +36,8 @@ class WelcomController extends Controller
         if ($request->national_card) {
             $validated['national_card'] = $request->file('national_card')->store('national_card_file', 'public');
         }
+
+        $validated['status'] = 0;
             
         $apartment = Apartment::create($validated);
 

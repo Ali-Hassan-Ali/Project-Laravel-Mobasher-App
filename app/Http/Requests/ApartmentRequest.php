@@ -40,7 +40,7 @@ class ApartmentRequest extends FormRequest
             'balcony'            => ['nullable'],
             'passenger_kitchen'  => ['nullable'],
             'elevator'           => ['nullable'],
-            'video'              => ['nullable','file'],
+            'video'              => ['nullable','file','max:500'],
             'city_id'            => ['required','numeric'],
             'region_id'          => ['nullable','numeric'],
             'number_rental_days' => ['required','numeric'],
@@ -66,6 +66,13 @@ class ApartmentRequest extends FormRequest
         return $rules;
 
     }//end of rul
+
+    public function messages()
+    {
+        return [            
+          'video.max' => "Maximum file size to upload is 8MB (8192 KB). If you are uploading a photo, try to reduce its resolution to make it under 8MB"
+        ];
+    }
 
     protected function prepareForValidation()
     {
