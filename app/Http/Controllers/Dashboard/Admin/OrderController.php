@@ -23,7 +23,12 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::WhenSearch(request()->search)->latest()->paginate(10);
+        dd(Order::with('user')->first());
+
+        $orders = Order::WhenSearch(request()->search)
+                        ->with('user','apartment')
+                        ->latest()
+                        ->paginate(10);
 
         return view('dashboard_admin.orders.index', compact('orders'));
 

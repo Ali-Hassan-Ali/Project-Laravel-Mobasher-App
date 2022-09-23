@@ -7,23 +7,27 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Resources\OederResources;
 use App\Models\Order;
+use App\Rules\PhoneNumber;
 
 class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = Validator::make($request->only('user_id','apartment_id'), [
+        $validator = Validator::make($request->all(), [
             'user_id'      => ['required','numeric'],
             'apartment_id' => ['required','numeric', 'unique:orders'],
+            'name'         => ['required','string','min:2','max:50'],
+            'phone'        => ['required','numeric', new PhoneNumber],
         ]);
+
 
         if ($validator->fails()) {
 
-            return response()->api([], true, $validator->errors()->first(), 422);
+            return response()->api([], true, $validator->errors()->all(), 422);
 
         }//end of if
 
-        $newOrder = Order::create($request->only('user_id','apartment_id'));
+        $newOrder = Order::create($validator->validated());
 
         $order = Order::with('apartment.images')->find($newOrder->id);
 

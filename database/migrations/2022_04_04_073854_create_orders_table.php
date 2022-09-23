@@ -15,8 +15,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Apartment::class)->unique();
-            $table->foreignIdFor(\App\Models\User::class);
+            
+            $table->foreignIdFor(\App\Models\Apartment::class);
+            $table->foreignId('user_id');
+
+            $table->string('name');
+            $table->integer('phone');
+
             $table->integer('total_price')->default('0');
             $table->enum('status', ['waiting', 'apeoved', 'unapeoved'])->default('waiting');
             $table->timestamps();

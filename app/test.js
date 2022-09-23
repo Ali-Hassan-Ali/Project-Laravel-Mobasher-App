@@ -31,3 +31,26 @@
 				  									  // #
 				  									 // #
 				  								// #####
+
+
+
+
+
+
+
+
+
+var name = 'ali';		
+
+//use bad
+if (name == 'ali') {
+	return 'yes';
+} elseif (name == 'hassan') {
+	return 'yes';
+} elseif (name == 'ahmed') {
+	return 'yes';
+} else {
+
+}
+//use like
+name == 'ali' ? 'yes' : 'no';

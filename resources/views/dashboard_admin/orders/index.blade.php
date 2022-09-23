@@ -70,7 +70,7 @@
                                 @foreach ($orders as $index=>$order)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $order->user->username }}</td>
+                                        <td>{{ $order->user->username ?? '' }}</td>
                                         <td>
                                             <a href="{{ route('dashboard.admin.apartments.show', $order->apartment->id) }}">
                                                 {{ $order->apartment->full_name }}
