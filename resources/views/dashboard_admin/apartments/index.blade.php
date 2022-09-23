@@ -65,6 +65,7 @@
                                     <th>@lang('apartments.second_phone')</th>
                                     <th>@lang('apartments.owner_name')</th>
                                     <th>@lang('apartments.owner_phone')</th>
+                                    <th>@lang('apartments.status')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
@@ -83,6 +84,7 @@
                                         <td>{{ $apartment->second_phone ?? '' }}</td>
                                         <td>{{ $apartment->owner_name ?? '' }}</td>
                                         <td>{{ $apartment->owner_phone ?? '' }}</td>
+                                        <td>@lang('dashboard.' . $apartment->status)</td>
                                         <td>{{ $apartment->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('apartments_update'))
@@ -102,6 +104,18 @@
                                             @if (auth()->user()->hasPermission('apartments_read'))
                                                 <a href="{{ route('dashboard.admin.apartments.show', $apartment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> @lang('dashboard.show')</a>
                                             @endif
+
+                                            <form action="{{ route('dashboard.admin.apartments.status', $apartment->id) }}" method="post" style="display: inline-block">
+                                                
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+
+                                                <button type="submit" class="btn btn-{{ $apartment->status == 1 ? 'success' : 'danger' }} btn-sm">
+                                                    <i class="fas fa-{{ $apartment->status == 1 ? 'toggle-off' : 'toggle-on' }}"></i> 
+                                                    @lang('apartments.' . $apartment->status)
+                                                </button>
+                                            </form><!-- end of form -->
+
                                         </td>
                                     </tr>
                                 

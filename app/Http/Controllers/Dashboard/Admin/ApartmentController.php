@@ -160,18 +160,10 @@ class ApartmentController extends Controller
     public function status(Apartment $apartment)
     {
 
-        try {
+        $apartment->update(['status' => $apartment->status == false ? true : false]);
 
-            $apartment->update(['status' => $apartment->status == false ? true : false]);
-
-            session()->flash('success', __('dashboard.updated_successfully'));
-            return redirect()->back();
-
-        } catch (\Exception $e) {
-
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-
-        }//end try
+        session()->flash('success', __('dashboard.updated_successfully'));
+        return redirect()->route('dashboard.admin.apartments.index');
 
     }//end of apartments status
 

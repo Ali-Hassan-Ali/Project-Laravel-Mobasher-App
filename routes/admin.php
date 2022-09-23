@@ -41,7 +41,7 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::resource('owners', OwnerController::class)->except(['show']);
 
     //apartments routes
-    Route::get('status/{apartment}', [ApartmentController::class,'status'])->name('apartments.status');
+    Route::put('status/{apartment}', [ApartmentController::class,'status'])->name('apartments.status');
     Route::resource('apartments', ApartmentController::class);
 
     //orders routes
