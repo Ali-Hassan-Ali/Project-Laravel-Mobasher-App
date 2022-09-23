@@ -13,7 +13,7 @@ class CategorysTableSeeder extends Seeder
      */
     public function run()
     {
-        $categorys = ['شقق فندقية   ','شقق عادية    ','شقق مفروشة   '];
+        $categorys = ['شقق فندقية' ,'شقق عادية' ,'شقق مفروشة'];
 
         foreach ($categorys as $category) {
             
