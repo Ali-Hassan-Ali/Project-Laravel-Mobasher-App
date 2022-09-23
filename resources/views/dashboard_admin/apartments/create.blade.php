@@ -191,6 +191,26 @@
 
                         <div class="row">
 
+                            <div class="form-group col-md-12">
+                                <label>@lang('apartments.full_name')</label>
+                                <input type="test" name="full_name" class="form-control" value="{{ old('full_name') }}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>@lang('apartments.first_phone')</label>
+                                <input type="number" name="first_phone" class="form-control" value="{{ old('first_phone') }}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>@lang('apartments.second_phone')</label>
+                                <input type="number" name="second_phone" class="form-control" value="{{ old('second_phone') }}">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label>@lang('apartments.contract_terms')</label>
+                                <textarea class="form-control" name="contract_terms" rows="6">{{ old('contract_terms') }}</textarea>
+                            </div>
+
                             <div class="form-group col-md-6">
                                 <label>@lang('apartments.national_card')</label>
                                 <input type="file" name="national_card" class="form-control" value="{{ old('national_card') }}">
@@ -200,25 +220,8 @@
                                 <label>@lang('apartments.ownership')</label>
                                 <input type="text" name="ownership" class="form-control" value="{{ old('ownership') }}">
                             </div>
-                            
-                            <div class="form-group col-md-6">
-                                <label>@lang('apartments.number_rooms')</label>
-                                <input type="number" name="number_rooms" class="form-control" value="{{ old('number_rooms', 1) }}" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>@lang('apartments.floor_rooms')</label>
-                                <input type="number" name="floor_rooms" class="form-control" value="{{ old('floor_rooms', 0) }}" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>@lang('apartments.area_metres')</label>
-                                <input type="number" name="area_metres" class="form-control" value="{{ old('area_metres',1) }}" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>@lang('apartments.number_bathrooms')</label>
-                                <input type="number" name="number_bathrooms" class="form-control" value="{{ old('number_bathrooms',1) }}" required>
-                            </div>
 
-                        </div>
+                        </div>{{-- end of row --}}
 
                         <h3>@lang('apartments.admin_information')</h3>
 

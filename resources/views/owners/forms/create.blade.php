@@ -161,6 +161,17 @@
                         </div>
 
                         <div class="form-group col-md-6">
+                            <label>@lang('dashboard.categorys')</label>
+                            <select class="form-control" required name="region_id">
+                                <option value="">@lang('dashboard.select')</option>
+                                @foreach ($regions as $region)
+                                    <option value="{{ $region->id }}"
+                                        {{ old('region_id', $apartment->region_id) == $region->id ? 'selected' : '' }}>{{ $region->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
                             <label>@lang('dashboard.citys')</label>
                             <select class="form-control" required name="city_id">
                                 <option value="">@lang('dashboard.select')</option>
