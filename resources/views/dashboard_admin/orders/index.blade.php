@@ -78,7 +78,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('dashboard.admin.apartments.show', $order->apartment->id) }}">
-                                                ffff
+                                                {{ $order->apartment->owner_name }}
                                             </a>
                                         </td>
                                         <td>@lang('orders.'. $order->status)</td>
