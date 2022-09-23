@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.apartments')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.apartments')  .' - '. __('dashboard.edit'))
 
     <div class="content-wrapper">
 
@@ -23,7 +23,7 @@
             <div class="box box-primary">
 
                 <div class="box-header">
-                    <h3 class="box-title">@lang('dashboard.add')</h3>
+                    <h3 class="box-title">@lang('dashboard.edit')</h3>
                 </div><!-- end of box header -->
 
                 <div class="box-body">
@@ -270,7 +270,7 @@
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-plus"></i> @lang('dashboard.add')
+                                <i class="fa fa-plus"></i> @lang('dashboard.update')
                             </button>
                         </div>
 
