@@ -86,6 +86,18 @@
 
                     <h3>@lang('apartments.inner_shape')</h3>
                     </br>
+
+                    <div class="col-6">
+                        <label>@lang('dashboard.apartments')</label>
+                        <select class="form-control" required name="category_id">
+                            <option value="">@lang('dashboard.select')</option>
+                            @foreach ($categorys as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </br>
                     
 
                     <div class="row">
