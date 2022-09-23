@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             
             $table->foreignIdFor(\App\Models\Apartment::class);
-            $table->foreignId(\App\Models\User::class);
+            $table->foreignIdFor(\App\Models\User::class);
 
             $table->string('name');
             $table->integer('phone');
