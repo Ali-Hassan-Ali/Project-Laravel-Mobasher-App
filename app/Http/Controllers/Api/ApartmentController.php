@@ -17,7 +17,7 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::where('status', 1)->with('images')->get();
         
-        return response()->api($apartments);
+        return response()->api(new ApatrmentResources($apartments));
 
     }//end of index
 
