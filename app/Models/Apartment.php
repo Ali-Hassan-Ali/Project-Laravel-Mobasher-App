@@ -54,7 +54,7 @@ class Apartment extends Model
             return City::findOrFail($this->city_id)->name ?? '';
         }
 
-        return;
+        return '';
 
     }//end of get image path
 
@@ -67,7 +67,7 @@ class Apartment extends Model
             return City::find($this->city_id)->name ?? '';
         }
 
-        return;
+        return '';
 
     }//end of get image path
 
