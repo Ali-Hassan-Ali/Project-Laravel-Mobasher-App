@@ -13,7 +13,7 @@ class Apartment extends Model
     protected $table = 'apartments';
 
     protected $guarded = [];
-    protected $hidden  = ['deleted_at'];
+    protected $hidden  = ['deleted_at','region_name','second_phone','full_name_owner'];
     protected $appends = ['category_name','city','region','video_path', 'ownership_path', 'national_card_path','phone_master'];
 
     //attributes----------------------------------
