@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('works');
             $table->integer('phone1');
             $table->integer('phone2');
+            $table->integer('total_price');
 
             $table->string('city');
             $table->string('region');
