@@ -19,10 +19,23 @@ class CreateOrdersTable extends Migration
             $table->foreignIdFor(\App\Models\Apartment::class);
             $table->foreignIdFor(\App\Models\User::class);
 
-            $table->string('name');
-            $table->integer('phone');
+            $table->string('full_name');
+            $table->integer('age');
+            $table->string('gender');
+            $table->integer('identity');
+            $table->string('social_situation');
+            $table->string('works');
+            $table->integer('phone1');
+            $table->integer('phone2');
 
-            $table->integer('total_price')->default('0');
+            $table->string('city');
+            $table->string('region');
+            $table->string('full_region')->nullable();
+
+            $table->string('type_of_rent');
+            $table->string('incom');
+            $table->boolean('agreeya')->default(0);
+
             $table->enum('status', ['waiting', 'apeoved', 'unapeoved'])->default('waiting');
             $table->timestamps();
         });

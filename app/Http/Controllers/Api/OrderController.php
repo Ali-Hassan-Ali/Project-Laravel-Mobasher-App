@@ -16,8 +16,20 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id'      => ['required','numeric'],
             'apartment_id' => ['required','numeric', 'unique:orders'],
-            'name'         => ['required','string','min:2','max:50'],
-            'phone'        => ['required','numeric', new PhoneNumber],
+            'full_name'    => ['required','string','min:2','max:50'],
+            'phone1'       => ['required','numeric'],
+            'phone2'       => ['required','numeric'],
+            'age'          => ['required','numeric'],
+            'gender'       => ['nullable','min:2','max:50'],
+            'identity'     => ['required','numeric'],
+            'social_situation' => ['required','string','min:1','max:50'],
+            'works'        => ['required','string','min:1','max:50'],
+            'full_region'  => ['required','string','min:1','max:50'],
+            'city'         => ['required','string','min:1','max:50'],
+            'region'       => ['required','string','min:1','max:50'],
+            'type_of_rent' => ['required','string','min:1','max:50'],
+            'incom'        => ['required','string','min:1','max:50'],
+            'agreeya'      => ['required','string','min:1','max:50'],
         ]);
 
 
