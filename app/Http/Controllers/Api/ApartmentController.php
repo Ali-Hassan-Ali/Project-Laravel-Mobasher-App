@@ -41,7 +41,7 @@ class ApartmentController extends Controller
 
         $apartments['category'] = $category->name;
 
-        return response()->api(new ApatrmentResources($apartments));
+        return response()->api($apartments);
 
     }//end of index
 
